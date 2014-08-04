@@ -26,6 +26,11 @@ import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
+/**
+ * Test comment
+ * @author viktor
+ *
+ */
 public class Console
 {
 	public static void main(String[] args)
