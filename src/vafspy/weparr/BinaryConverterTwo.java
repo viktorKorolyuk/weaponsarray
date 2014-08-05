@@ -1,19 +1,19 @@
 package vafspy.weparr;
 
-import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.JButton;
 import javax.swing.UIManager;
-import java.awt.event.*;
 
-public class BinaryConverterTwo implements ActionListener{
+public class BinaryConverterTwo{
 
 	private JFrame binconv;
 	private JTextField textField;
@@ -22,18 +22,10 @@ public class BinaryConverterTwo implements ActionListener{
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					BinaryConverterTwo window = new BinaryConverterTwo();
-					window.binconv.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	public static void main(String[] args)
+	{
+		new BinaryConverterTwo();
+		}
 
 	/**
 	 * Create the application.
@@ -79,31 +71,12 @@ public class BinaryConverterTwo implements ActionListener{
 		binconv.getContentPane().add(textField);
 		textField.setColumns(10);
 		textField.addActionListener(new ActionListener() {
-
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String type = (String)comboBox.getSelectedItem();
-				boolean docontinue = true;
-				try { 
-			        Integer.parseInt(textField.getText()); 
-			    } catch(NumberFormatException err) { 
-			    	JOptionPane.showMessageDialog(null,"Error: " + err.getMessage() + "Please put digits as numbers do not work", "Alert", JOptionPane.ERROR_MESSAGE);
-			    	docontinue = false;
-			    }
-				if(docontinue){
-					switch (type) {
-					case "Bin":
-						textField_1.setText(Integer.toBinaryString(Integer.parseInt(textField.getText())));
-						break;
-					case "Hex":
-						textField_1.setText(Integer.toHexString(Integer.parseInt(textField.getText())));
-						break;
-					default:
-						break;
-					}
-				}
+				// TODO Auto-generated method stub
+				
 			}
-			
 		});
 		
 		JLabel lblNewLabel_1 = new JLabel("↓");
@@ -112,23 +85,29 @@ public class BinaryConverterTwo implements ActionListener{
 		binconv.getContentPane().add(lblNewLabel_1);
 		
 		JButton btnQuit = new JButton("Quit");
-		btnQuit.addActionListener(this);
+		btnQuit.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		btnQuit.setBounds(12, 130, 70, 25);
 		binconv.getContentPane().add(btnQuit);
 		
 		JButton btnBack = new JButton("Back");
-		btnBack.addActionListener(this);
+		btnBack.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		btnBack.setBounds(100, 130, 76, 25);
 		binconv.getContentPane().add(btnBack);
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(e.getActionCommand() == "Quit") {
-			binconv.dispose();
-		} else if(e.getActionCommand() == "Back") {
-			new mainPass();
-			binconv.dispose();
-		}
-	}
+	
 }
