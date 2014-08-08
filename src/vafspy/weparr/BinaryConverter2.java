@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -23,10 +24,14 @@ public class BinaryConverter2 extends JFrame {
 	// Add a serialVersionUID: Takes care of those pesky warnings!
 	private static final long serialVersionUID = 1L;
 	public JFrame frame;
-	public JComboBox<String> comboBox;
-	public JLabel bin;
+	public JComboBox comboBox;
+	
+	public int frameSx = 200;
+	public int frameSy = 200;
+	
+	public JLabel titleText;
 	public JLabel title;
-	public JLabel bin2;
+	
 	public JPanel main;
 	public JTextPane data;
 	public JTextField input;
@@ -39,7 +44,7 @@ public class BinaryConverter2 extends JFrame {
 		}
 		public BinaryConverter2()
 		{	frame = new JFrame();
-			frame.setTitle("Binary Converter v1.5");
+			frame.setTitle("Binary Converter v2");
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame.getContentPane().setLayout(null);
 			try{UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());}catch(Exception ex){}
@@ -60,7 +65,7 @@ public class BinaryConverter2 extends JFrame {
 		input = new JTextField();
 		input.setEditable(true);
 		input.setCaretColor(Color.BLUE);
-		input.setBounds(78, 131, 194, 25);
+		input.setBounds(10, 90, 150, 25);
 		input.setForeground(Color.BLACK);
 		input.setCaretColor(Color.RED);
 		input.setOpaque(true);
@@ -96,12 +101,44 @@ public class BinaryConverter2 extends JFrame {
 		});
 		//input.getText();
 		
+		input2 = new JTextField();
+		input2.setEditable(true);
+		input2.setBounds(10, 130, 150, 25);
+		input2.setForeground(Color.BLACK);
+		input2.setCaretColor(Color.RED);
+		input2.setOpaque(true);
+		input2.setFont(new Font("Courier New", Font.BOLD, 12));
+		//input.getText();
+		input2.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{	String binary2 = input2.getText();
+				 try {
+					doCommand(binary2);
+					
+				 int i = Integer.parseInt(binary2);               //hex to decimal
+				    String binary3 = Integer.toHexString(i);       //decimal to binary
+				    /**
+				    System.out.println("This is Binary: " + binary3);
+				    */
+				    try {input2.setText("");}
+				    catch (Exception ex) {}
+				    data.setText("");
+				    data.setText(binary3);
+				    input2.selectAll();	
+				    input.setText("");
+				 }
+				 catch(Exception ex) {
+					 JOptionPane.showMessageDialog(null,"Error: " + ex.getMessage() + " Please put digits as numbers do not work", "Alert", JOptionPane.ERROR_MESSAGE);
+				 }}});
+
 		
 		title = new JLabel();
 		title.setText("10| Binary And Hex |01");
-		title.setFont(new Font("Courier New", Font.BOLD, 35));
+		title.setFont(new Font("Courier New", Font.BOLD, 15));
 		title.setForeground(Color.BLACK);
-		title.setBounds(78, 10, 500, 100);
+		title.setBounds(5, 5, 500, 20);
 		title.addMouseListener(new MouseListener(){
 
 			@Override
@@ -137,50 +174,8 @@ public class BinaryConverter2 extends JFrame {
 			
 		});
 		
-		input2 = new JTextField();
-		input2.setEditable(true);
-		input2.setBounds(300, 131, 194, 25);
-		//input.setSize(120, 20);
-		//input.setBorder(null);
-		
-		//input.getContentPane().setBackground(new Color(50,50,50));
-		
-		//input2.setBackground(new Color(255,0,0));
-		input2.setForeground(Color.BLACK);
-		input2.setCaretColor(Color.RED);
-		input2.setOpaque(true);
-		input2.setFont(new Font("Courier New", Font.BOLD, 12));
-		//input.getText();
-		input2.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{	String binary2 = input2.getText();
-				 try {
-					doCommand(binary2);
-					
-				 int i = Integer.parseInt(binary2);               //hex to decimal
-				    String binary3 = Integer.toHexString(i);       //decimal to binary
-				    /**
-				    System.out.println("This is Binary: " + binary3);
-				    */
-				    try {input2.setText("");}
-				    catch (Exception ex) {}
-				    data.setText("");
-				    data.setText(binary3);
-				    input2.selectAll();	
-				    input.setText("");
-				 }
-				 catch(Exception ex) {
-					 JOptionPane.showMessageDialog(null,"Error: " + ex.getMessage() + " Please put digits as numbers do not work", "Alert", JOptionPane.ERROR_MESSAGE);
-				 }}});
-		
-
-		JLabel bin = new JLabel("Binary");
-		bin.setBounds(78, 104, 70, 15);
-		
-		JLabel bin2 = new JLabel("Hex to Text");
-		bin2.setBounds(300, 104, 80, 30);
+		titleText = new JLabel();
+		titleText.setText("");
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.setBounds(540, 250, 100, 50);
@@ -206,8 +201,8 @@ public class BinaryConverter2 extends JFrame {
 		
 		frame.add(btnQuit);
 		
-		JButton btnGen = new JButton("Generate Binary");
-		btnGen.setBounds(77, 168, 150, 25);
+		JButton btnGen = new JButton("1 - 2");
+		btnGen.setBounds(10, 168, 90, 25);
 		btnGen.addActionListener(new ActionListener()
 		{
 
@@ -237,9 +232,8 @@ public class BinaryConverter2 extends JFrame {
 		
 	   frame.getContentPane().add(btnGen);
 			
-	   JButton btnGen2 = new JButton("Generate Hex");
-		btnGen2.setBounds(300, 168, 150, 25);
-		
+	   JButton btnGen2 = new JButton("2 - 1");
+		btnGen2.setBounds(100, 168, 90, 25);
 		btnGen2.addActionListener(new ActionListener()
 		{
 
@@ -266,13 +260,15 @@ public class BinaryConverter2 extends JFrame {
 				 input2.selectAll();	
 			}
 		});
-		/**
+		
+		
+		//Choices
 		comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Hi", "Yo"}));
-		comboBox.setBounds(326, 75, 50, 24);
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Bin", "Hex"}));
+		comboBox.setBounds(100, 50, 70, 24);
 		//comboBox.set
 		frame.getContentPane().add(comboBox);
-		*/
+		
 		
 	   frame.getContentPane().add(btnGen2);
 			
@@ -280,10 +276,9 @@ public class BinaryConverter2 extends JFrame {
 		frame.add(input2, BorderLayout.SOUTH);
 		frame.add(data, BorderLayout.SOUTH);
 		frame.getContentPane().add(title);
-		frame.getContentPane().add(bin);
-		frame.getContentPane().add(bin2);
+		
 		//frame.getContentPane().setBackground(new Color(201,201,201));
-		frame.setSize(660, 380);
+		frame.setSize(frameSx,frameSy);
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
 		frame.setVisible(true);
