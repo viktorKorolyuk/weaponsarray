@@ -1,2 +1,2 @@
-# Weapons array
-This is a program that we have created, we do not intend it to be used for malicious purposes only for... <--- got bored 
+# Weapons Array
+Weapons Array is a java-based project designed with hacker-ish tools. It is not indended to be used for any malicious purposes. This project is currently private, so only members can see it.
