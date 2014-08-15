@@ -24,7 +24,7 @@ public class BinaryConverter2 extends JFrame {
 	// Add a serialVersionUID: Takes care of those pesky warnings!
 	private static final long serialVersionUID = 1L;
 	public JFrame frame;
-	public JComboBox comboBox;
+	public JComboBox<String> comboBox;
 	
 	public int frameSx = 200;
 	public int frameSy = 200;
@@ -263,8 +263,8 @@ public class BinaryConverter2 extends JFrame {
 		
 		
 		//Choices
-		comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Bin", "Hex"}));
+		comboBox = new JComboBox<String>();
+		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"Bin", "Hex"}));
 		comboBox.setBounds(100, 50, 70, 24);
 		//comboBox.set
 		frame.getContentPane().add(comboBox);
