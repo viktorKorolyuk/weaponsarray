@@ -31,14 +31,14 @@ public class BinaryConverter extends JFrame {
 	public JTextPane data;
 	public JTextField input;
 	public JTextField input2;
-	//public JScrollPane scrollpane;
 	public StyledDocument document;
 	public static void main(String[] args)
 	{
 		new BinaryConverter();
-		}
+	}
 		public BinaryConverter()
-		{	frame = new JFrame();
+		{
+			frame = new JFrame();
 			frame.setTitle("Binary Converter v1.5");
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame.getContentPane().setLayout(null);
@@ -48,138 +48,85 @@ public class BinaryConverter extends JFrame {
 			data.setEditable(false);
 			data.setBounds(78, 230, 450, 100);
 			data.setText("Your answer will go here");
-			//	data.setSize(5,5);
 			data.setForeground(Color.BLUE);
 			data.setBackground(Color.WHITE);
-	//		data.setBorder(border);
-		data.setFont(new Font("Courier New", Font.BOLD, 12));
-		data.setOpaque(true);
+			data.setFont(new Font("Courier New", Font.BOLD, 12));
+			data.setOpaque(true);
 		
-		//document = data.getStyledDocument();
-		
-		input = new JTextField();
-		input.setEditable(true);
-		input.setCaretColor(Color.BLUE);
-		input.setBounds(78, 131, 194, 25);
-		input.setForeground(Color.BLACK);
-		input.setCaretColor(Color.RED);
-		input.setOpaque(true);
-		input.setFont(new Font("Courier New", Font.BOLD, 12));
-		input.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
+			input = new JTextField();
+			input.setEditable(true);
+			input.setCaretColor(Color.BLUE);
+			input.setBounds(78, 131, 194, 25);
+			input.setForeground(Color.BLACK);
+			input.setCaretColor(Color.RED);
+			input.setOpaque(true);
+			input.setFont(new Font("Courier New", Font.BOLD, 12));
+			input.addActionListener(new ActionListener()
 			{
-				String binary1 = input.getText();
-				try{
-					  doCommand(binary1);
-					
-				    int i = Integer.parseInt(binary1);               //hex to decimal
-				    String binary = Integer.toBinaryString(i);       //decimal to binary
-				    /**
-				    System.out.println("This is Binary: " + binary);
-				    */
-				    try {input.setText("");}
-				    catch (Exception ex) {}
-				  
+				@Override
+				public void actionPerformed(ActionEvent e)
+				{
+					String binary1 = input.getText();
+					String binary = "";
+					try{
+						doCommand(binary1);
+						int i = Integer.parseInt(binary1);               //hex to decimal
+						binary = Integer.toBinaryString(i);       //decimal to binary
+						input.setText("");
+					}
+					catch(Exception ex) {
+						 JOptionPane.showMessageDialog(null,"Error: -->: " + ex.getMessage() + " |Please enter numbers as digits, words do not work.", "Conversion Error.", JOptionPane.ERROR_MESSAGE);
+					}
 				    data.setText("");
 				    data.setText(binary);
-				input.selectAll();
-				input2.setText("");
-				 doCommand(binary1);
+				    input.selectAll();
+				    input2.setText("");
+				    doCommand(binary1);
 				}
-				
-				catch(Exception ex) {
-					 JOptionPane.showMessageDialog(null,"Error: -->: " + ex.getMessage() + " |Please put digits as numbers do not work", "Alert", JOptionPane.ERROR_MESSAGE);
-				 }
-			}	
-		});
-		//input.getText();
-		
-		
-		title = new JLabel();
-		title.setText("10| Binary And Hex |01");
-		title.setFont(new Font("Courier New", Font.BOLD, 35));
-		title.setForeground(Color.BLACK);
-		title.setBounds(78, 10, 500, 100);
-		title.addMouseListener(new MouseListener(){
+			});
+			title = new JLabel();
+			title.setText("10| Binary And Hex |01");
+			title.setFont(new Font("Courier New", Font.BOLD, 35));
+			title.setForeground(Color.BLACK);
+			title.setBounds(78, 10, 500, 100);
+			input2 = new JTextField();
+			input2.setEditable(true);
+			input2.setBounds(300, 131, 194, 25);
+			input2.setForeground(Color.BLACK);
+			input2.setCaretColor(Color.RED);
+			input2.setOpaque(true);
+			input2.setFont(new Font("Courier New", Font.BOLD, 12));
+			input2.addActionListener(new ActionListener()
+			{
+				@Override
+				public void actionPerformed(ActionEvent e)
+				{
+					String binary2 = input2.getText();
+					try {
+						doCommand(binary2);
 
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				data.setText("Watcha looking at ya big baby?");
-				
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
-		
-		input2 = new JTextField();
-		input2.setEditable(true);
-		input2.setBounds(300, 131, 194, 25);
-		//input.setSize(120, 20);
-		//input.setBorder(null);
-		
-		//input.getContentPane().setBackground(new Color(50,50,50));
-		
-		//input2.setBackground(new Color(255,0,0));
-		input2.setForeground(Color.BLACK);
-		input2.setCaretColor(Color.RED);
-		input2.setOpaque(true);
-		input2.setFont(new Font("Courier New", Font.BOLD, 12));
-		//input.getText();
-		input2.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{	String binary2 = input2.getText();
-				 try {
-					doCommand(binary2);
-					
-				 int i = Integer.parseInt(binary2);               //hex to decimal
-				    String binary3 = Integer.toHexString(i);       //decimal to binary
-				    /**
-				    System.out.println("This is Binary: " + binary3);
-				    */
-				    try {input2.setText("");}
-				    catch (Exception ex) {}
-				    data.setText("");
-				    data.setText(binary3);
-				    input2.selectAll();	
-				    input.setText("");
-				 }
-				 catch(Exception ex) {
-					 JOptionPane.showMessageDialog(null,"Error: " + ex.getMessage() + " Please put digits as numbers do not work", "Alert", JOptionPane.ERROR_MESSAGE);
-				 }}});
+						int i = Integer.parseInt(binary2);               //hex to decimal
+						String binary3 = Integer.toHexString(i);       //decimal to binary
+						try {
+							input2.setText("");
+						}
+						catch (Exception ex) {}
+						data.setText("");
+						data.setText(binary3);
+						input2.selectAll();	
+						input.setText("");
+					}
+					catch(Exception ex) {
+						JOptionPane.showMessageDialog(null,"Error: " + ex.getMessage() + " Please put digits as numbers do not work", "Alert", JOptionPane.ERROR_MESSAGE);
+					}
+				}
+			});
 		
 
-		JLabel bin = new JLabel("Binary");
+		JLabel bin = new JLabel("dec->bin");
 		bin.setBounds(78, 104, 70, 15);
 		
-		JLabel bin2 = new JLabel("Hex to Text");
+		JLabel bin2 = new JLabel("hex->dec");
 		bin2.setBounds(300, 104, 80, 30);
 		
 		JButton btnBack = new JButton("Back");
@@ -199,10 +146,9 @@ public class BinaryConverter extends JFrame {
 		btnQuit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			//	new mainPass();
 				frame.dispose();
-				}
-			});
+			}
+		});
 		
 		frame.add(btnQuit);
 		
@@ -218,71 +164,55 @@ public class BinaryConverter extends JFrame {
 					doCommand(binary1);
 				    int i = Integer.parseInt(binary1);               //hex to decimal
 				    String binary = Integer.toBinaryString(i);       //decimal to binary
-				    /**
-				    System.out.println("This is Binary: " + binary);
-				    */
 				    try {input.setText("");}
 				    catch (Exception ex) {}
 				    data.setText("");
 				    data.setText(binary);
-				input.selectAll();
-				input2.setText("");
+				    input.selectAll();
+				    input2.setText("");
 				}
-				
 				catch(Exception ex) {
 					 JOptionPane.showMessageDialog(null,"Error: " + ex.getMessage() + "Please put digits as numbers do not work", "Alert", JOptionPane.ERROR_MESSAGE);
-				 }
+				}
 			}	
 		});
 		
 	   frame.getContentPane().add(btnGen);
-			
 	   JButton btnGen2 = new JButton("Generate Hex");
-		btnGen2.setBounds(300, 168, 150, 25);
+	   btnGen2.setBounds(300, 168, 150, 25);
 		
-		btnGen2.addActionListener(new ActionListener()
-		{
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String binary2 = input2.getText();
-				 try {
-					 doCommand(binary2);
-				 int i = Integer.parseInt(binary2);               //hex to decimal
-				    String binary3 = Integer.toHexString(i);       //decimal to binary
-				    /**
-				    System.out.println("This is Binary: " + binary3);
-				    */
-				    try {input2.setText("");}
-				    catch (Exception ex) {}
-				    data.setText("");
-				    data.setText(binary3);
-				    input2.selectAll();
-				    input.setText("");
-				 }
-				 catch(Exception ex) {
-					 JOptionPane.showMessageDialog(null,"Error: " + ex.getMessage() + " Please put digits as numbers do not work", "Alert", JOptionPane.ERROR_MESSAGE);
-				 }
-				 input2.selectAll();	
+	   btnGen2.addActionListener(new ActionListener()
+	   {
+		   @Override
+		   public void actionPerformed(ActionEvent e) {
+			   String binary2 = input2.getText();
+			   try {
+				   doCommand(binary2);
+				   int i = Integer.parseInt(binary2);               //hex to decimal
+				   String binary3 = Integer.toHexString(i);       //decimal to binary
+				   try {
+					   input2.setText("");
+				   }
+				   catch (Exception ex) {}
+				   data.setText("");
+				   data.setText(binary3);
+				   input2.selectAll();
+				   input.setText("");
+			   }
+			   catch(Exception ex) {
+				   JOptionPane.showMessageDialog(null,"Error: " + ex.getMessage() + " Please put digits as numbers do not work", "Alert", JOptionPane.ERROR_MESSAGE);
+			   }
+			   input2.selectAll();	
 			}
 		});
-		/**
-		comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Hi", "Yo"}));
-		comboBox.setBounds(326, 75, 50, 24);
-		//comboBox.set
-		frame.getContentPane().add(comboBox);
-		*/
 		
-	   frame.getContentPane().add(btnGen2);
-			
+	    frame.getContentPane().add(btnGen2);
 		frame.add(input, BorderLayout.SOUTH);
 		frame.add(input2, BorderLayout.SOUTH);
 		frame.add(data, BorderLayout.SOUTH);
 		frame.getContentPane().add(title);
 		frame.getContentPane().add(bin);
 		frame.getContentPane().add(bin2);
-		//frame.getContentPane().setBackground(new Color(201,201,201));
 		frame.setSize(660, 380);
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
@@ -291,25 +221,19 @@ public class BinaryConverter extends JFrame {
 	public void doCommand(String binary1)
 	{
 		final String[] commands = binary1.split(" ");
-		 try
+		try
+		{
+			if (commands[0].equalsIgnoreCase("close"))
 			{
-				if (commands[0].equalsIgnoreCase("close"))
-				{
-					data.setText("Hacker");
-					JOptionPane.showMessageDialog(null, "Accses Granted", "Alert", JOptionPane.INFORMATION_MESSAGE);
-					JOptionPane.showMessageDialog(null, "Nope", "Alert", JOptionPane.INFORMATION_MESSAGE);
-					JOptionPane.showMessageDialog(null, "Its just a binary converter - geez - Stop being a big baby", "Alert", JOptionPane.INFORMATION_MESSAGE);
-					//JOptionPane.showMessageDialog(null, "Installing Virus...101010101", "Alert", JOptionPane.INFORMATION_MESSAGE);
-					
-					frame.dispose();
-					JOptionPane.showMessageDialog(null, "Program Chrased :-( (Change to linux so that its dosn't crash)", "Alert", JOptionPane.ERROR_MESSAGE);
-					JOptionPane.showMessageDialog(null, "Thanks To all the people who dodn't help me make this, because you made me want to do it", "Thanks", JOptionPane.INFORMATION_MESSAGE);
-				}
-					//JOptionPane.showMessageDialog(null, message, "Message", JOptionPane.INFORMATION_MESSAGE);	
+				data.setText("Hacker");
+				JOptionPane.showMessageDialog(null, "Accses Granted", "Alert", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Nope", "Alert", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Its just a binary converter - geez - Stop being a big baby", "Alert", JOptionPane.INFORMATION_MESSAGE);		
+				frame.dispose();
+				JOptionPane.showMessageDialog(null, "Program Chrased :-( (Change to linux so that its dosn't crash)", "Alert", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Thanks To all the people who dodn't help me make this, because you made me want to do it", "Thanks", JOptionPane.INFORMATION_MESSAGE);
 			}
-		 
-			catch (Exception ex)
-			{
-				
-			}
-		 }}
+		}
+		catch (Exception ex){}
+	}
+}
