@@ -97,10 +97,6 @@ public mainPass() {
 				new ConverterTwoWay();
 				frame.dispose();
 				break;
-			case "Binary to ...":
-				new BinaryConverter();
-				frame.dispose();
-				break;
 			case "Calculator":
 				new CalculatorPage();
 				frame.dispose();
