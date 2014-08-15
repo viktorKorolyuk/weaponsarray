@@ -92,38 +92,40 @@ public mainPass() {
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if (((String)choices.getSelectedItem()).equals("DoS/DDos (Not working)")){
-	//			frame.dispose();
-			}
-			if (((String)choices.getSelectedItem()).equals("Binary to ...")){
+			switch((String)choices.getSelectedItem()) {
+			case "Two-way Converter":
+				new ConverterTwoWay();
+				frame.dispose();
+				break;
+			case "Binary to ...":
 				new BinaryConverter();
-					frame.dispose();
-						}
-			if (((String)choices.getSelectedItem()).equals("Calculator")){
+				frame.dispose();
+				break;
+			case "Calculator":
 				new CalculatorPage();
-				frame.dispose();	
-			}
-			if (((String)choices.getSelectedItem()).equals("Console")){
+				frame.dispose();
+				break;
+			case "Console":
 				new Console();
-				frame.dispose();	
-			}
-			if (((String)choices.getSelectedItem()).equals("Fork Bomb")){
+				frame.dispose();
+				break;
+			case "Fork Bomb":
 				new virus2();
-				frame.dispose();	
-			}
-			
-			if (((String)choices.getSelectedItem()).equals("Virus")){
+				frame.dispose();
+				break;
+			case "Virus":
 				JOptionPane.showMessageDialog(null, "This Is VERY dangerous if handled incorrectly \n and I am not Responsible for any damage done", "Alert", JOptionPane.INFORMATION_MESSAGE);
 				new virus_create();
-				frame.dispose();	
+				frame.dispose();
+				break;
+			default:
+				break;
 			}
-			
-			
 		}
 	});
 	
 	choices = new JComboBox<String>();
-	choices.setModel(new DefaultComboBoxModel<String>(new String[] {"Choose:","Binary to ...","Calculator","Console","DoS/DDos (Not working)","Fork Bomb","Virus"}));
+	choices.setModel(new DefaultComboBoxModel<String>(new String[] {"Choose:","Two-way Converter","Binary to ...","Calculator","Console","DoS/DDos (Not working)","Fork Bomb","Virus"}));
 	choices.setBounds(56, 100, 300, 20);
 	choices.setOpaque(true);
 	
