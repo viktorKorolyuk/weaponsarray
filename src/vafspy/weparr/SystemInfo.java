@@ -197,6 +197,7 @@ public class SystemInfo extends JFrame {
 		btm.add(new JLabel("   "));
 		table = new JTable(props, tcolnames);
 		table.setAutoCreateRowSorter(true);
+		table.setEnabled(false);
 		tscroll = new JScrollPane(table);
 		tscroll.setPreferredSize(new Dimension(640, 240));  
 		table.setFillsViewportHeight(true);
