@@ -19,21 +19,21 @@ public class ConverterTwoWay extends JFrame implements ActionListener{
 	// Add a serialVersionUID: Takes care of those pesky warnings!
 	private static final long serialVersionUID = 1L;
 	
-	Converter cnv = new Converter();
+		Converter cnv = new Converter();
 	
-	// Define JFrame elements
-	// First, the JPanel
-	JPanel pnl = new JPanel();
-	// Now, add the drop-downs area.
-	JLabel typelabel = new JLabel("Conversion:");
-	JComboBox<String> frombox = new JComboBox<String>(new String[]{"bin","hex","dec","oct"});
-	JLabel tolabel = new JLabel("to");
-	JComboBox<String> tobox = new JComboBox<String>(new String[]{"bin","hex","dec","oct"});
-	JLabel fromfieldtxt = new JLabel("Data to convert:");
-	JTextField fromtext = new JTextField(10);
-	// Now, the convert button!
-	JButton convertbtn = new JButton("---  ---  ---  CONVERT  ---  ---  ---");
-	// Construction time! (this is the constructor)
+		// Define JFrame elements
+		// First, the JPanel
+		JPanel pnl = new JPanel();
+		// Now, add the drop-downs area.
+		JLabel typelabel = new JLabel("Conversion:");
+		JComboBox<String> frombox = new JComboBox<String>(new String[]{"bin","hex","dec","oct"});
+		JLabel tolabel = new JLabel("to");
+		JComboBox<String> tobox = new JComboBox<String>(new String[]{"bin","hex","dec","oct"});
+		JLabel fromfieldtxt = new JLabel("Data to convert:");
+		JTextField fromtext = new JTextField(10);
+		// Now, the convert button!
+		JButton convertbtn = new JButton("---  ---  ---  CONVERT  ---  ---  ---");
+		// Construction time! (this is the constructor)
 	public ConverterTwoWay() {
 		super("Two-way Converter");
 		setSize(250, 90);

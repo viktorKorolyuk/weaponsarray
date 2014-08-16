@@ -3,6 +3,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -25,18 +27,27 @@ public class CalculatorPage extends JFrame{
 	public JLabel answerlbl;
 	
 	public static void main(String[] args){
+		
 		new CalculatorPage();
 	}
 	
 	public CalculatorPage(){
 		try
 		{
+			
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		}
 		catch (Exception ex) {}
 		f = new JFrame();
 		f.setTitle("CalcUlatorz");
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		f.addWindowListener(new WindowAdapter()
+		{
+		    public void windowClosing(WindowEvent e)
+		    {
+		        new mainPass();
+		    }
+		});
 		f.getContentPane().setLayout(null);
 		
 		JButton equals = new JButton("Equals");
