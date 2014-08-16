@@ -20,7 +20,6 @@ public static void main(String[] args){
 		a++;
 		}
 	}
-	
 	public ScreenRecorder(){
 		
 		
@@ -34,7 +33,7 @@ public static void main(String[] args){
 		 while (b<5){
 	       try{
 	       BufferedImage image = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
-	       ImageIO.write(image, "png", new File("/home/viktor/Documents"+ b +".png"));
+	       ImageIO.write(image, "png", new File("/home/viktor/Documents"+ b +".png",new File(args[0])));
 	       }
 	       catch (IOException ex){}
 	       catch (AWTException ex){}
