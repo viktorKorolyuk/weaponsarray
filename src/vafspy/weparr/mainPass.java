@@ -97,6 +97,10 @@ public mainPass() {
 				new ConverterTwoWay();
 				frame.dispose();
 				break;
+			case "System Info":
+				SystemInfo.main(new String[1]);
+				frame.dispose();
+				break;
 			case "Calculator":
 				new CalculatorPage();
 				frame.dispose();
@@ -121,7 +125,7 @@ public mainPass() {
 	});
 	
 	choices = new JComboBox<String>();
-	choices.setModel(new DefaultComboBoxModel<String>(new String[] {"Choose:","Two-way Converter","Binary to ...","Calculator","Console","DoS/DDos (Not working)","Fork Bomb","Virus"}));
+	choices.setModel(new DefaultComboBoxModel<String>(new String[] {"Choose:","System Info","Two-way Converter","Binary to ...","Calculator","Console","DoS/DDos (Not working)","Fork Bomb","Virus"}));
 	choices.setBounds(56, 100, 300, 20);
 	choices.setOpaque(true);
 	
