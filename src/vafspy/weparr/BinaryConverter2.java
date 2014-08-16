@@ -35,7 +35,7 @@ public class BinaryConverter2 extends JFrame {
 	public JPanel main;
 	public JTextPane data;
 	public JTextField input;
-	public JTextField input2;
+	public JTextField output;
 	//public JScrollPane scrollpane;
 	public StyledDocument document;
 	public static void main(String[] args)
@@ -48,19 +48,6 @@ public class BinaryConverter2 extends JFrame {
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame.getContentPane().setLayout(null);
 			try{UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());}catch(Exception ex){}
-		
-			data = new JTextPane();
-			data.setEditable(false);
-			data.setBounds(78, 230, 450, 100);
-			data.setText("Your answer will go here");
-			//	data.setSize(5,5);
-			data.setForeground(Color.BLUE);
-			data.setBackground(Color.WHITE);
-	//		data.setBorder(border);
-		data.setFont(new Font("Courier New", Font.BOLD, 12));
-		data.setOpaque(true);
-		
-		//document = data.getStyledDocument();
 		
 		input = new JTextField();
 		input.setEditable(true);
@@ -90,7 +77,7 @@ public class BinaryConverter2 extends JFrame {
 				    data.setText("");
 				    data.setText(binary);
 				input.selectAll();
-				input2.setText("");
+				output.setText("");
 				 doCommand(binary1);
 				}
 				
@@ -101,19 +88,19 @@ public class BinaryConverter2 extends JFrame {
 		});
 		//input.getText();
 		
-		input2 = new JTextField();
-		input2.setEditable(true);
-		input2.setBounds(10, 130, 150, 25);
-		input2.setForeground(Color.BLACK);
-		input2.setCaretColor(Color.RED);
-		input2.setOpaque(true);
-		input2.setFont(new Font("Courier New", Font.BOLD, 12));
+		output = new JTextField();
+		output.setEditable(true);
+		output.setBounds(10, 130, 150, 25);
+		output.setForeground(Color.BLACK);
+		output.setCaretColor(Color.RED);
+		output.setOpaque(true);
+		output.setFont(new Font("Courier New", Font.BOLD, 12));
 		//input.getText();
-		input2.addActionListener(new ActionListener()
+		output.addActionListener(new ActionListener()
 		{
 			@Override
 			public void actionPerformed(ActionEvent e)
-			{	String binary2 = input2.getText();
+			{	String binary2 = output.getText();
 				 try {
 					doCommand(binary2);
 					
@@ -122,11 +109,11 @@ public class BinaryConverter2 extends JFrame {
 				    /**
 				    System.out.println("This is Binary: " + binary3);
 				    */
-				    try {input2.setText("");}
+				    try {output.setText("");}
 				    catch (Exception ex) {}
 				    data.setText("");
 				    data.setText(binary3);
-				    input2.selectAll();	
+				    output.selectAll();	
 				    input.setText("");
 				 }
 				 catch(Exception ex) {
@@ -221,7 +208,7 @@ public class BinaryConverter2 extends JFrame {
 				    data.setText("");
 				    data.setText(binary);
 				input.selectAll();
-				input2.setText("");
+				output.setText("");
 				}
 				
 				catch(Exception ex) {
@@ -239,7 +226,7 @@ public class BinaryConverter2 extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String binary2 = input2.getText();
+				String binary2 = output.getText();
 				 try {
 					 doCommand(binary2);
 				 int i = Integer.parseInt(binary2);               //hex to decimal
@@ -247,17 +234,17 @@ public class BinaryConverter2 extends JFrame {
 				    /**
 				    System.out.println("This is Binary: " + binary3);
 				    */
-				    try {input2.setText("");}
+				    try {output.setText("");}
 				    catch (Exception ex) {}
 				    data.setText("");
 				    data.setText(binary3);
-				    input2.selectAll();
+				    output.selectAll();
 				    input.setText("");
 				 }
 				 catch(Exception ex) {
 					 JOptionPane.showMessageDialog(null,"Error: " + ex.getMessage() + " Please put digits as numbers do not work", "Alert", JOptionPane.ERROR_MESSAGE);
 				 }
-				 input2.selectAll();	
+				 output.selectAll();	
 			}
 		});
 		
@@ -273,7 +260,7 @@ public class BinaryConverter2 extends JFrame {
 	   frame.getContentPane().add(btnGen2);
 			
 		frame.add(input, BorderLayout.SOUTH);
-		frame.add(input2, BorderLayout.SOUTH);
+		frame.add(output, BorderLayout.SOUTH);
 		frame.add(data, BorderLayout.SOUTH);
 		frame.getContentPane().add(title);
 		
