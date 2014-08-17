@@ -19,7 +19,6 @@ public class ScreenRecorder extends JFrame{
 	public int b =1;
 	public String username = System.getProperty("user.name");
 	public String one;
-	public Thread mt = new Thread();
 	
 	JButton start = new JButton();
 	
@@ -50,20 +49,26 @@ public static void main(String[] args){
 	}
 	
 	public void captureScreen(String one) {
-		mt.start();
-		
-		 for (int i = 0; i < 50; i++){
-	       try{
-	    	  // TimeUnit.NANOSECONDS.sleep(1);
-	       BufferedImage image = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
-	       ImageIO.write(image, "png", new File("/home/"+ username +"/Documents/"+ i +".png"));
-	       }
-	       catch (IOException ex){}
-	       catch (AWTException ex){} catch (Exception ex) {
-		
-			ex.printStackTrace();
-		}
-	   }
+		Thread run = new Thread(new ScreenCapturing());
+		run.start();
 	}
 	
+}
+class ScreenCapturing implements Runnable {
+	public String username = System.getProperty("user.name");
+	@Override
+	public void run() {
+		for (int i = 0; i < 50; i++){
+		       try{
+		    	  // TimeUnit.NANOSECONDS.sleep(1);
+		       BufferedImage image = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
+		       ImageIO.write(image, "png", new File("/home/"+ username +"/Documents/"+ i +".png"));
+		       }
+		       catch (IOException ex){}
+		       catch (AWTException ex){} catch (Exception ex) {
+			
+				ex.printStackTrace();
+			}
+		   }
+	}
 }
