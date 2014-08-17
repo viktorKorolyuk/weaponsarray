@@ -17,10 +17,13 @@ import javax.swing.JFrame;
 public class ScreenRecorder extends JFrame{
 	private static final long serialVersionUID = 1L;
 	public int b =1;
+	public boolean go;
 	public String username = System.getProperty("user.name");
+	Thread run = new Thread(new ScreenCapturing());
 	public String one;
 	
 	JButton start = new JButton();
+	JButton stop = new JButton();
 	
 public static void main(String[] args){
 		new ScreenRecorder();
@@ -39,17 +42,19 @@ public static void main(String[] args){
 				captureScreen(one);
 			}
 		});
-		
-		
-		
+		add(stop);
+		stop.setBounds(50, 50, 50, 100);
+		stop.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+					run.stop();			
+			}
+		});
 		
 		String one = Integer.toString(b);
-	
-	
 	}
 	
 	public void captureScreen(String one) {
-		Thread run = new Thread(new ScreenCapturing());
 		run.start();
 	}
 	
@@ -58,11 +63,12 @@ class ScreenCapturing implements Runnable {
 	public String username = System.getProperty("user.name");
 	@Override
 	public void run() {
-		for (int i = 0; i < 50; i++){
+	
+		while (true){
 		       try{
 		    	  // TimeUnit.NANOSECONDS.sleep(1);
 		       BufferedImage image = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
-		       ImageIO.write(image, "png", new File("/home/"+ username +"/Documents/"+ i +".png"));
+		       ImageIO.write(image, "png", new File("/home/"+ username +"/Documents/"+ "" +".png"));
 		       }
 		       catch (IOException ex){}
 		       catch (AWTException ex){} catch (Exception ex) {
