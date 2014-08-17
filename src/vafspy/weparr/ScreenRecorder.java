@@ -17,8 +17,9 @@ import javax.swing.JFrame;
 public class ScreenRecorder extends JFrame{
 	private static final long serialVersionUID = 1L;
 	public int b =1;
-	
+	public String username = System.getProperty("user.name");
 	public String one;
+	public Thread mt = new Thread();
 	
 	JButton start = new JButton();
 	
@@ -30,9 +31,10 @@ public static void main(String[] args){
 		super("Hi");
 		setSize(400,400);
 		setVisible(true);
+		getContentPane().setLayout(null);
 		add(start);
-		start.addActionListener(new ActionListener() {
-			
+		start.setBounds(6, 7, 6, 6);
+		start.addActionListener(new ActionListener() {	
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				captureScreen(one);
@@ -43,24 +45,24 @@ public static void main(String[] args){
 		
 		
 		String one = Integer.toString(b);
-		
+	
 	
 	}
 	
 	public void captureScreen(String one) {
+		mt.start();
 		
-		 while (b<5){
+		 for (int i = 0; i < 50; i++){
 	       try{
 	    	  // TimeUnit.NANOSECONDS.sleep(1);
 	       BufferedImage image = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
-	       ImageIO.write(image, "png", new File("/home/viktor/Documents/"+ b +".png"));
+	       ImageIO.write(image, "png", new File("/home/"+ username +"/Documents/"+ i +".png"));
 	       }
 	       catch (IOException ex){}
 	       catch (AWTException ex){} catch (Exception ex) {
-			// TODO Auto-generated catch block
+		
 			ex.printStackTrace();
 		}
-	 b++;
 	   }
 	}
 	
