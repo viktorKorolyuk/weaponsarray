@@ -69,7 +69,7 @@ class ScreenCapturing implements Runnable {
 		       try{
 		    	  // TimeUnit.NANOSECONDS.sleep(1);
 		       BufferedImage image = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
-		       ImageIO.write(image, "png", new File("/home/"+ username +"/Documents/"+ count +".png"));
+		       ImageIO.write(image, "png", new File("/tmp/recordings/"+ username + "/" + count +".png"));
 		       }
 		       catch (IOException ex){}
 		       catch (AWTException ex){} catch (Exception ex) {
