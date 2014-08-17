@@ -67,10 +67,12 @@ class ScreenCapturing implements Runnable {
 	@Override
 	public void run() {
 	int count = 1;
+	new File("/tmp/recordings/" + username).mkdirs();
 		while (true){
 		       try{
 		    	  // TimeUnit.NANOSECONDS.sleep(1);
 		       BufferedImage image = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
+		       new File("/tmp/recordings/" + username).mkdirs();
 		       ImageIO.write(image, "png", new File("/tmp/recordings/"+ username + "/" + count +".png"));
 		       }
 		       catch (IOException ex){}
