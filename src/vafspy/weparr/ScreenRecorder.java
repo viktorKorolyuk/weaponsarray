@@ -9,8 +9,6 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
@@ -47,6 +45,7 @@ public static void main(String[] args){
 		add(stop);
 		stop.setBounds(50, 50, 50, 100);
 		stop.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
 			@Override
 			public void actionPerformed(ActionEvent e) {
 					run.stop();	
@@ -54,7 +53,6 @@ public static void main(String[] args){
 			}
 		});
 		
-		String one = Integer.toString(b);
 	}
 	
 	public void captureScreen(String one) {
