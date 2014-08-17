@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
 
 public class CalculatorPage extends JFrame {
 	// Add a serialVersionUID: Takes care of those pesky warnings!
@@ -34,9 +35,17 @@ public class CalculatorPage extends JFrame {
 
 	public CalculatorPage() {
 		try {
-
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (Exception ex) {
+		    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+		        if ("Nimbus".equals(info.getName())) {
+		            UIManager.setLookAndFeel(info.getClassName());
+		            break;
+		        }
+		    }
+		} catch (Exception e) {
+				try {
+					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+				} catch (Exception ex) {
+				}
 		}
 		f = new JFrame();
 		f.setTitle("CalcUlatorz");

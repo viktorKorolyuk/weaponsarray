@@ -12,6 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
 
 import vafspy.weparr.cnvlib.Converter;
 
@@ -41,6 +43,19 @@ public class ConverterTwoWay extends JFrame implements ActionListener {
 		super("Two-way Converter");
 		setSize(250, 90);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		try {
+		    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+		        if ("Nimbus".equals(info.getName())) {
+		            UIManager.setLookAndFeel(info.getClassName());
+		            break;
+		        }
+		    }
+		} catch (Exception e) {
+				try {
+					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+				} catch (Exception ex) {
+				}
+		}
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				new mainPass();
