@@ -16,7 +16,7 @@ import javax.swing.JFrame;
 
 public class ScreenRecorder extends JFrame{
 	private static final long serialVersionUID = 1L;
-	public int b =1;
+	public int b = 1;
 	public boolean go;
 	public String username = System.getProperty("user.name");
 	Thread run = new Thread(new ScreenCapturing());
@@ -63,18 +63,19 @@ class ScreenCapturing implements Runnable {
 	public String username = System.getProperty("user.name");
 	@Override
 	public void run() {
-	
+	int count = 1;
 		while (true){
 		       try{
 		    	  // TimeUnit.NANOSECONDS.sleep(1);
 		       BufferedImage image = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
-		       ImageIO.write(image, "png", new File("/home/"+ username +"/Documents/"+ "" +".png"));
+		       ImageIO.write(image, "png", new File("/home/"+ username +"/Documents/"+ count +".png"));
 		       }
 		       catch (IOException ex){}
 		       catch (AWTException ex){} catch (Exception ex) {
 			
 				ex.printStackTrace();
 			}
+		       count++;
 		   }
 	}
 }
