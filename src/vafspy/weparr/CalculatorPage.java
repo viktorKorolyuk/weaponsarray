@@ -35,12 +35,16 @@ public class CalculatorPage extends JFrame {
 
 	public CalculatorPage() {
 		try {
-		    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-		        if ("Nimbus".equals(info.getName())) {
-		            UIManager.setLookAndFeel(info.getClassName());
-		            break;
-		        }
-		    }
+			if(Features.nimbus()) {
+				for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+					if ("Nimbus".equals(info.getName())) {
+						UIManager.setLookAndFeel(info.getClassName());
+						break;
+		        	}
+		    	}
+			} else {
+				throw new Exception();
+			}
 		} catch (Exception e) {
 				try {
 					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
