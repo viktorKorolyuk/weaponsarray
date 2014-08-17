@@ -108,7 +108,6 @@ public class CalculatorPage extends JFrame {
 		f.add(equals);
 		f.setSize(400, 500);
 		f.setResizable(false);
-		// f.getContentPane().setBackground(new Color(163,163,163));
 		f.setLocationRelativeTo(null);
 		f.setVisible(true);
 	}

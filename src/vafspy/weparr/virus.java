@@ -57,7 +57,6 @@ public class virus {
 		title.setForeground(new Color(255, 255, 255));
 		title.setBounds(70, 10, 700, 100);
 
-		// ImageIcon Logo = new ImageIcon("src/icon.png");
 
 		yes = new JButton();
 		yes.setText("Yes");
@@ -79,7 +78,7 @@ public class virus {
 		negative = new JButton();
 		negative.setText("No");
 		negative.setEnabled(true);
-		negative.setBounds(170, 300, 200, 40); // x ,y , hight, length
+		negative.setBounds(170, 300, 200, 40); // x ,y , height, length
 		negative.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -120,13 +119,6 @@ public class virus {
 		int x1 = rand.nextInt(660) + 1;
 		int y1 = rand.nextInt(349) + 1;
 		System.out.println(x1 + " : " + y1);
-		/*
-		 * Why are these here? They are just taking up space and adding compile
-		 * warnings. commenting out! Double x = new
-		 * Double(negative.getAlignmentX()); Double y = new
-		 * Double(negative.getAlignmentY()); int x2 = x.intValue(); int y2 =
-		 * y.intValue();
-		 */
 
 		negative.setBounds(x1 / 2, y1 / 2, 200, 40);
 	}
@@ -136,7 +128,6 @@ public class virus {
 		frame.setSize(600, 600);
 		frame.setLocationRelativeTo(null);
 
-		// -______________-
 
 		new virus2();
 		frame.dispose();

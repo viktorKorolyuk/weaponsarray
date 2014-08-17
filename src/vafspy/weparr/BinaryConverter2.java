@@ -36,7 +36,6 @@ public class BinaryConverter2 extends JFrame {
 	public JTextPane data;
 	public JTextField input;
 	public JTextField output;
-	// public JScrollPane scrollpane;
 	public StyledDocument document;
 
 	public static void main(String[] args) {
@@ -96,7 +95,6 @@ public class BinaryConverter2 extends JFrame {
 				}
 			}
 		});
-		// input.getText();
 
 		output = new JTextField();
 		output.setEditable(true);
@@ -105,7 +103,6 @@ public class BinaryConverter2 extends JFrame {
 		output.setCaretColor(Color.RED);
 		output.setOpaque(true);
 		output.setFont(new Font("Courier New", Font.BOLD, 12));
-		// input.getText();
 		output.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -116,9 +113,6 @@ public class BinaryConverter2 extends JFrame {
 					int i = Integer.parseInt(binary2); // hex to decimal
 					String binary3 = Integer.toHexString(i); // decimal to
 																// binary
-					/**
-					 * System.out.println("This is Binary: " + binary3);
-					 */
 					try {
 						output.setText("");
 					} catch (Exception ex) {
@@ -147,32 +141,27 @@ public class BinaryConverter2 extends JFrame {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
 				data.setText("Watcha looking at ya big baby?");
 
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
 
 			}
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
 
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
 
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
 
 			}
 
@@ -198,7 +187,6 @@ public class BinaryConverter2 extends JFrame {
 		btnQuit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// new mainPass();
 				frame.dispose();
 			}
 		});
@@ -217,9 +205,6 @@ public class BinaryConverter2 extends JFrame {
 					int i = Integer.parseInt(binary1); // hex to decimal
 					String binary = Integer.toBinaryString(i); // decimal to
 																// binary
-					/**
-					 * System.out.println("This is Binary: " + binary);
-					 */
 					try {
 						input.setText("");
 					} catch (Exception ex) {
@@ -255,9 +240,6 @@ public class BinaryConverter2 extends JFrame {
 					int i = Integer.parseInt(binary2); // hex to decimal
 					String binary3 = Integer.toHexString(i); // decimal to
 																// binary
-					/**
-					 * System.out.println("This is Binary: " + binary3);
-					 */
 					try {
 						output.setText("");
 					} catch (Exception ex) {
@@ -283,7 +265,6 @@ public class BinaryConverter2 extends JFrame {
 		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {
 				"Bin", "Hex" }));
 		comboBox.setBounds(100, 50, 70, 24);
-		// comboBox.set
 		frame.getContentPane().add(comboBox);
 
 		frame.getContentPane().add(btnGen2);
@@ -292,8 +273,6 @@ public class BinaryConverter2 extends JFrame {
 		frame.add(output, BorderLayout.SOUTH);
 		frame.add(data, BorderLayout.SOUTH);
 		frame.getContentPane().add(title);
-
-		// frame.getContentPane().setBackground(new Color(201,201,201));
 		frame.setSize(frameSx, frameSy);
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
@@ -314,9 +293,6 @@ public class BinaryConverter2 extends JFrame {
 								null,
 								"Its just a binary converter - geez - Stop being a big baby",
 								"Alert", JOptionPane.INFORMATION_MESSAGE);
-				// JOptionPane.showMessageDialog(null,
-				// "Installing Virus...101010101", "Alert",
-				// JOptionPane.INFORMATION_MESSAGE);
 
 				frame.dispose();
 				JOptionPane
@@ -330,8 +306,6 @@ public class BinaryConverter2 extends JFrame {
 								"Thanks To all the people who dodn't help me make this, because you made me want to do it",
 								"Thanks", JOptionPane.INFORMATION_MESSAGE);
 			}
-			// JOptionPane.showMessageDialog(null, message, "Message",
-			// JOptionPane.INFORMATION_MESSAGE);
 		}
 
 		catch (Exception ex) {

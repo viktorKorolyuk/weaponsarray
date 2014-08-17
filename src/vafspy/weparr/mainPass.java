@@ -26,11 +26,9 @@ public class mainPass {
 	public JLabel bin;
 	public JLabel title;
 	public JLabel bin2;
-	// public JPanel main;
 	public JTextPane data;
 	public JTextField input;
 	public JTextField input2;
-	// public JScrollPane scrollpane;
 	public StyledDocument document;
 	public JComboBox<String> choices;
 
@@ -49,7 +47,6 @@ public class mainPass {
 		} catch (Exception ex) {
 		}
 
-		// frame.setSize(5, 5);
 		data = new JTextPane();
 		data.setEditable(false);
 		data.setOpaque(true);
@@ -78,7 +75,6 @@ public class mainPass {
 			logo.setIcon(new ImageIcon(img));
 		} catch (IOException ex) {
 		}
-		// logo.setText("Register 'Hacks'");
 		logo.setEnabled(true);
 		logo.setBounds(400, 50, 185, 200); // x ,y , height, length
 		logo.addActionListener(new ActionListener() {
@@ -88,7 +84,6 @@ public class mainPass {
 				JOptionPane.showMessageDialog(null,
 						"This Aplication Was Created By r0ut3rK3y", "Alert",
 						JOptionPane.INFORMATION_MESSAGE);
-				// frame.dispose();
 
 			}
 

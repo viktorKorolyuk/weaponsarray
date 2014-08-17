@@ -39,7 +39,6 @@ public class virus2 {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		// frame.setSize(5, 5);
 		data = new JTextPane();
 		data.setEditable(false);
 		data.setOpaque(true);
@@ -50,9 +49,6 @@ public class virus2 {
 		title.setFont(new Font("Courier New", Font.BOLD, 20));
 		title.setForeground(new Color(255, 255, 255));
 		title.setBounds(70, 10, 700, 100);
-
-		// ImageIcon Logo = new ImageIcon("src/icon.png");
-		// ImageIcon x = new ImageIcon("src/quit.png");
 
 		yes = new JButton();
 		yes.setText("Quit");
@@ -66,7 +62,6 @@ public class virus2 {
 			}
 		});
 		frame.add(yes);
-		// frame.add(yes);
 
 		negative = new JButton();
 		negative.setText("No");
@@ -91,8 +86,6 @@ public class virus2 {
 
 		frame.add(viruslogo);
 
-		// frame.add(title);
-		// frame.add(negative);
 		frame.add(data);
 		frame.setSize(600, 600);
 		frame.setLocationRelativeTo(null);
@@ -111,19 +104,12 @@ public class virus2 {
 		int y1 = rand.nextInt(349) + 1;
 		System.out.println(x1 + " : " + y1);
 
-		// Double x = new Double(negative.getAlignmentX());
-		// Double y = new Double(negative.getAlignmentY());
-		// int x2 = x.intValue();
-		// int y2 = y.intValue();
-
 		negative.setBounds(x1 / 2, y1 / 2, 200, 40);
 	}
 
 	public void still() {
 
 		frame.setLocationRelativeTo(null);
-
-		// ___________________________
 
 	}
 

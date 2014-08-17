@@ -19,14 +19,11 @@ public class virus_create {
 	public JFrame frame;
 
 	public JLabel bin;
-	// public JCheckBox choice1;
 	public JLabel title;
 	public JLabel bin2;
-	// public JPanel main;
 	public JTextPane data;
 	public JTextField input;
 	public JTextField input2;
-	// public JScrollPane scrollpane;
 	public StyledDocument document;
 	public JComboBox<String> choices;
 
@@ -45,7 +42,6 @@ public class virus_create {
 		} catch (Exception ex) {
 		}
 
-		// frame.setSize(5, 5);
 		data = new JTextPane();
 		data.setEditable(false);
 		data.setOpaque(true);
@@ -57,7 +53,6 @@ public class virus_create {
 		title.setBounds(70, 10, 700, 100);
 
 		ImageIcon Logo = new ImageIcon("src/icon.png");
-		// ImageIcon x = new ImageIcon("src/quit.png");
 
 		JButton quit = new JButton();
 		quit.setText("Quit");
@@ -71,7 +66,6 @@ public class virus_create {
 		frame.add(quit);
 
 		JButton logo = new JButton(Logo);
-		// logo.setText("Register 'Hacks'");
 		logo.setEnabled(true);
 		logo.setBounds(400, 50, 185, 200); // x ,y , hight, length
 		logo.addActionListener(new ActionListener() {
@@ -87,7 +81,7 @@ public class virus_create {
 		JButton register = new JButton();
 		register.setText("Create");
 		register.setEnabled(true);
-		register.setBounds(170, 300, 200, 40); // x ,y , hight, length
+		register.setBounds(170, 300, 200, 40); // x ,y , height, length
 		register.setLocation(100, 300);
 		register.addActionListener(new ActionListener() {
 			@Override

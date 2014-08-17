@@ -26,7 +26,7 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
 /**
- * Test comment
+ * Test javadoc comment lol.
  * 
  * @author viktor
  *
@@ -64,14 +64,11 @@ public class Console {
 
 		input = new JTextField();
 		input.setEditable(true);
-		// input.setBorder(null);
-		// input.getContentPane().setBackground(new Color(50,50,50));
 		input.setBackground(new Color(50, 50, 50));
 		input.setForeground(Color.BLACK);
 		input.setCaretColor(Color.GREEN);
 		input.setOpaque(false);
 		input.setFont(new Font("Courier New", Font.BOLD, 12));
-		// input.getText();
 
 		input.addActionListener(new ActionListener() {
 			@Override
@@ -81,9 +78,7 @@ public class Console {
 
 				if (text.length() > 1) {
 					print(text + "\n", false, new Color(255, 0, 0));
-					// println(text, false);
 					doCommand(text);
-					// scrollBottom;
 					input.selectAll();
 				}
 			}
@@ -127,10 +122,7 @@ public class Console {
 			String username = System.getProperty("user.name");
 			String ip = InetAddress.getLocalHost().getHostAddress();
 
-			// println("",ip, new Color(255,155,155));
 			System.out.println(username + "'s Ip: " + ip);
-			// PrintWriter iplog = new PrintWriter("IpLog.txt");
-			// iplog.print(text);
 		} catch (Exception ex) {
 		}
 	}
@@ -206,7 +198,6 @@ public class Console {
 
 			String username = System.getProperty("user.name");
 			System.out.println(username);
-			// println("",ip, new Color(255,155,155));
 			System.out.println("find ip: " + ip);
 			println("\n Found your IP addresses: ", trace, new Color(0, 200, 0));
 			println("Remote IP: " + ip, trace, new Color(0, 200, 0));
