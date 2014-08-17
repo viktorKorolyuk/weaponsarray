@@ -35,7 +35,7 @@ public static void main(String[] args){
 		setVisible(true);
 		getContentPane().setLayout(null);
 		add(start);
-		start.setBounds(6, 7, 6, 6);
+		start.setBounds(6, 7, 50, 100);
 		start.addActionListener(new ActionListener() {	
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -61,9 +61,12 @@ public static void main(String[] args){
 	
 }
 class ScreenCapturing implements Runnable {
+	
 	public String username = System.getProperty("user.name");
+	
 	@Override
 	public void run() {
+		
 	int count = 1;
 		while (true){
 		       try{
