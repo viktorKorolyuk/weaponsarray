@@ -68,18 +68,11 @@ public class ConverterTwoWay extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		// Convert and show!
-		JOptionPane.showMessageDialog(
-				this,
-				"Original(in "
-						+ frombox.getSelectedItem()
-						+ "): "
-						+ fromtext.getText()
-						+ "  Converted to "
-						+ tobox.getSelectedItem()
-						+ ": "
-						+ cnv.convert((String) frombox.getSelectedItem(),
-								(String) tobox.getSelectedItem(),
-								fromtext.getText()), "Conversion results",
-				JOptionPane.PLAIN_MESSAGE);
+		try {
+			String converted = cnv.convert((String) frombox.getSelectedItem(), (String) tobox.getSelectedItem(), fromtext.getText());
+			JOptionPane.showMessageDialog(this, "Original(in " + frombox.getSelectedItem() + "): " + fromtext.getText() + "  Converted to " + tobox.getSelectedItem() + ": " + converted, "Conversion results", JOptionPane.PLAIN_MESSAGE);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Number formatting error! Number may be too long or in incorrect format.", "Conversion Error.", JOptionPane.ERROR_MESSAGE);
+		}
 	}
 }
