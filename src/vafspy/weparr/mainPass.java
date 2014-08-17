@@ -2,10 +2,14 @@ package vafspy.weparr;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -70,6 +74,11 @@ public mainPass() {
 	
 	
 	JButton logo = new JButton();
+	try {
+		Image img = ImageIO.read(this.getClass().getResource("/resources/icon.png"));
+		logo.setIcon(new ImageIcon(img));
+	} catch (IOException ex) {
+	}
 	//logo.setText("Register 'Hacks'");
 	logo.setEnabled(true);
 	logo.setBounds(400,50,185,200); // x ,y , height, length
