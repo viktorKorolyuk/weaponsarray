@@ -19,7 +19,7 @@ public class ScreenRecorder extends JFrame{
 	public int b =1;
 	public boolean go;
 	public String username = System.getProperty("user.name");
-	Thread run = new Thread(new ScreenCapturing());
+	Thread run;
 	public String one;
 	
 	JButton start = new JButton();
@@ -55,6 +55,7 @@ public static void main(String[] args){
 	}
 	
 	public void captureScreen(String one) {
+		run = new Thread(new ScreenCapturing());
 		run.start();
 	}
 	
