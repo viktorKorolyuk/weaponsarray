@@ -47,7 +47,9 @@ public static void main(String[] args){
 		stop.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-					run.stop();			
+					run.stop();	
+					File temp = new File("/tmp/recordings/" + username);
+					temp.delete();
 			}
 		});
 		
