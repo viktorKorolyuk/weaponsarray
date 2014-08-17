@@ -45,15 +45,14 @@ public static void main(String[] args){
 		add(stop);
 		stop.setBounds(50, 50, 50, 100);
 		stop.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
 			@Override
 			public void actionPerformed(ActionEvent e) {
 					run.stop();	
-					File temp = new File("/tmp/recordings/" + username);
-					temp.delete();
+					deleteDirectory(new File("/tmp/recordings/" + username));
 			}
 		});
 		
-		String one = Integer.toString(b);
 	}
 	
 	public void captureScreen(String one) {
@@ -61,6 +60,23 @@ public static void main(String[] args){
 		run.start();
 	}
 	
+	// REFERENCE: http://stackoverflow.com/questions/3775694/deleting-folder-from-java
+	public static boolean deleteDirectory(File dir) {
+	    if(! dir.exists() || !dir.isDirectory())    {
+	        return false;
+	    }
+
+	    String[] files = dir.list();
+	    for(int i = 0, len = files.length; i < len; i++)    {
+	        File f = new File(dir, files[i]);
+	        if(f.isDirectory()) {
+	            deleteDirectory(f);
+	        }else   {
+	            f.delete();
+	        }
+	    }
+	    return dir.delete();
+	}
 }
 class ScreenCapturing implements Runnable {
 	
