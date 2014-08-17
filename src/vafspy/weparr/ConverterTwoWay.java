@@ -41,7 +41,7 @@ public class ConverterTwoWay extends JFrame implements ActionListener {
 	// Construction time! (this is the constructor)
 	public ConverterTwoWay() {
 		super("Two-way Converter");
-		setSize(250, 90);
+		setSize(250, 95);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		try {
 		    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {

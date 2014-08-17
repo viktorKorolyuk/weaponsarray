@@ -86,14 +86,14 @@ public class CalculatorPage extends JFrame {
 		op.setOpaque(true);
 
 		input1 = new JTextField();
-		input1.setBounds(10, 30, 100, 20);
+		input1.setBounds(10, 30, 100, 30);
 		input1.setForeground(Color.BLACK);
 		input1.setCaretColor(Color.GREEN);
 		input1.setOpaque(true);
 		input1.setFont(new Font("Courier New", Font.BOLD, 12));
 
 		input2 = new JTextField();
-		input2.setBounds(260, 30, 100, 20);
+		input2.setBounds(260, 30, 100, 30);
 		input2.setForeground(Color.BLACK);
 		input2.setCaretColor(Color.GREEN);
 		input2.setOpaque(true);
