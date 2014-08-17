@@ -13,7 +13,7 @@ public class Converter {
 		types.put("oct", new Octal());
 	}
 	// Conversion method.
-	public String convert(String from, String to, String value) {
+	public String convert(String from, String to, String value) throws Exception {
 		int middle;
 		Type typeto = types.get(to);
 		Type typefrom = types.get(from);
