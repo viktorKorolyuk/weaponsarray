@@ -44,12 +44,16 @@ public class ConverterTwoWay extends JFrame implements ActionListener {
 		setSize(250, 95);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		try {
-		    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-		        if ("Nimbus".equals(info.getName())) {
-		            UIManager.setLookAndFeel(info.getClassName());
-		            break;
-		        }
-		    }
+			if(Features.nimbus()) {
+				for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+					if ("Nimbus".equals(info.getName())) {
+						UIManager.setLookAndFeel(info.getClassName());
+						break;
+		        	}
+		    	}
+			} else {
+				throw new Exception();
+			}
 		} catch (Exception e) {
 				try {
 					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());

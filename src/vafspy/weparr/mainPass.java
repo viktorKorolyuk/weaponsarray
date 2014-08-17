@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Properties;
 
 import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
@@ -34,7 +33,6 @@ public class mainPass {
 	public JTextField input2;
 	public StyledDocument document;
 	public JComboBox<String> choices;
-	Properties features = new Properties();
 
 	public static void main(String[] args) {
 		new mainPass();
@@ -45,19 +43,19 @@ public class mainPass {
 		frame.setTitle("Weapons array");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		try {
-			features.load(getClass().getResourceAsStream("/resources/features.properties"));
-		} catch (IOException e2) {
-			e2.printStackTrace();
-		}
+		Features.load();
 
 		try {
-		    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-		        if ("Nimbus".equals(info.getName())) {
-		            UIManager.setLookAndFeel(info.getClassName());
-		            break;
-		        }
-		    }
+			if(Features.nimbus()) {
+				for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+					if ("Nimbus".equals(info.getName())) {
+						UIManager.setLookAndFeel(info.getClassName());
+						break;
+		        	}
+		    	}
+			} else {
+				throw new Exception();
+			}
 		} catch (Exception e) {
 				try {
 					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -160,18 +158,18 @@ public class mainPass {
 		modeltemp.add("Choose:");
 		modeltemp.add("System Info");
 		modeltemp.add("Two-way Converter");
-		if(Boolean.parseBoolean(features.getProperty("legacy"))){
+		if(Boolean.parseBoolean(Features.getProperty("legacy"))){
 			modeltemp.add("Binary to ...");
-			if(Boolean.parseBoolean(features.getProperty("notworking"))) {
+			if(Boolean.parseBoolean(Features.getProperty("notworking"))) {
 				modeltemp.add("Binary Converter v2");
 			}
 		}
 		modeltemp.add("Calculator");
 		modeltemp.add("Console");
-		if(Boolean.parseBoolean(features.getProperty("fakevirus"))) {
+		if(Boolean.parseBoolean(Features.getProperty("fakevirus"))) {
 			modeltemp.add("Fork Bomb");
 			modeltemp.add("Virus");
-			if(Boolean.parseBoolean(features.getProperty("notworking"))) {
+			if(Boolean.parseBoolean(Features.getProperty("notworking"))) {
 				modeltemp.add("Dos/DDos (Not working)");
 			}
 		}
