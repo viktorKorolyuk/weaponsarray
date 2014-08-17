@@ -4,39 +4,62 @@ import java.awt.AWTException;
 import java.awt.Rectangle;
 import java.awt.Robot;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 
-public class ScreenRecorder {
+public class ScreenRecorder extends JFrame{
+	private static final long serialVersionUID = 1L;
 	public int b =1;
 	
+	public String one;
+	
+	JButton start = new JButton();
+	
 public static void main(String[] args){
-	int a = 1;	
-	while (a<2){
 		new ScreenRecorder();
-		a++;
-		}
 	}
 	public ScreenRecorder(){
+		
+		super("Hi");
+		setSize(400,400);
+		setVisible(true);
+		add(start);
+		start.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				captureScreen(one);
+			}
+		});
+		
+		
 		
 		
 		String one = Integer.toString(b);
 		
-	captureScreen(one);
+	
 	}
 	
 	public void captureScreen(String one) {
 		
 		 while (b<5){
 	       try{
+	    	  // TimeUnit.NANOSECONDS.sleep(1);
 	       BufferedImage image = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
-	       ImageIO.write(image, "png", new File("/home/viktor/Documents"+ b +".png"));
+	       ImageIO.write(image, "png", new File("/home/viktor/Documents/"+ b +".png"));
 	       }
 	       catch (IOException ex){}
-	       catch (AWTException ex){}
+	       catch (AWTException ex){} catch (Exception ex) {
+			// TODO Auto-generated catch block
+			ex.printStackTrace();
+		}
 	 b++;
 	   }
 	}
