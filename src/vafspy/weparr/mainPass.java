@@ -145,6 +145,10 @@ public class mainPass {
 					new virus_create();
 					frame.dispose();
 					break;
+				case "Binary Converter v2":
+					new BinaryConverter2();
+					frame.dispose();
+					break;
 				default:
 					break;
 				}
@@ -153,16 +157,23 @@ public class mainPass {
 
 		choices = new JComboBox<String>();
 		ArrayList<String> modeltemp = new ArrayList<String>();
-		modeltemp.add("Chose:");
+		modeltemp.add("Choose:");
 		modeltemp.add("System Info");
 		modeltemp.add("Two-way Converter");
-		modeltemp.add("Binary to ...");
+		if(Boolean.parseBoolean(features.getProperty("legacy"))){
+			modeltemp.add("Binary to ...");
+			if(Boolean.parseBoolean(features.getProperty("notworking"))) {
+				modeltemp.add("Binary Converter v2");
+			}
+		}
 		modeltemp.add("Calculator");
 		modeltemp.add("Console");
-		modeltemp.add("Dos/DDos (Not working)");
 		if(Boolean.parseBoolean(features.getProperty("fakevirus"))) {
 			modeltemp.add("Fork Bomb");
 			modeltemp.add("Virus");
+			if(Boolean.parseBoolean(features.getProperty("notworking"))) {
+				modeltemp.add("Dos/DDos (Not working)");
+			}
 		}
 		choices.setModel(new DefaultComboBoxModel<String>(modeltemp.toArray(new String[0])));
 		choices.setBounds(56, 100, 300, 20);
