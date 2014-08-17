@@ -6,6 +6,8 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Properties;
 
 import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
@@ -32,6 +34,7 @@ public class mainPass {
 	public JTextField input2;
 	public StyledDocument document;
 	public JComboBox<String> choices;
+	Properties features = new Properties();
 
 	public static void main(String[] args) {
 		new mainPass();
@@ -42,6 +45,11 @@ public class mainPass {
 		frame.setTitle("Weapons array");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		try {
+			features.load(getClass().getResourceAsStream("/resources/features.properties"));
+		} catch (IOException e2) {
+			e2.printStackTrace();
+		}
 
 		try {
 		    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -144,10 +152,19 @@ public class mainPass {
 		});
 
 		choices = new JComboBox<String>();
-		choices.setModel(new DefaultComboBoxModel<String>(new String[] {
-				"Choose:", "System Info", "Two-way Converter", "Binary to ...",
-				"Calculator", "Console", "DoS/DDos (Not working)", "Fork Bomb",
-				"Virus" }));
+		ArrayList<String> modeltemp = new ArrayList<String>();
+		modeltemp.add("Chose:");
+		modeltemp.add("System Info");
+		modeltemp.add("Two-way Converter");
+		modeltemp.add("Binary to ...");
+		modeltemp.add("Calculator");
+		modeltemp.add("Console");
+		modeltemp.add("Dos/DDos (Not working)");
+		if(Boolean.parseBoolean(features.getProperty("fakevirus"))) {
+			modeltemp.add("Fork Bomb");
+			modeltemp.add("Virus");
+		}
+		choices.setModel(new DefaultComboBoxModel<String>(modeltemp.toArray(new String[0])));
 		choices.setBounds(56, 100, 300, 20);
 		choices.setOpaque(true);
 
