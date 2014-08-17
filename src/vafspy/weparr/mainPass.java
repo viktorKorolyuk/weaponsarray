@@ -147,6 +147,10 @@ public class mainPass {
 					new BinaryConverter2();
 					frame.dispose();
 					break;
+				case "Letters-In-Phone-Numbers Decoder":
+					new PhoneNumberCoder();
+					frame.dispose();
+					break;
 				default:
 					break;
 				}
@@ -166,6 +170,7 @@ public class mainPass {
 		}
 		modeltemp.add("Calculator");
 		modeltemp.add("Console");
+		modeltemp.add("Letters-In-Phone-Numbers Decoder");
 		if(Boolean.parseBoolean(Features.getProperty("fakevirus"))) {
 			modeltemp.add("Fork Bomb");
 			modeltemp.add("Virus");
