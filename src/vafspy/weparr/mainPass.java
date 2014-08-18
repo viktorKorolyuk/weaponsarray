@@ -46,21 +46,23 @@ public class mainPass {
 		Features.load();
 
 		try {
-			if(Features.nimbus()) {
-				for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+			if (Features.nimbus()) {
+				for (LookAndFeelInfo info : UIManager
+						.getInstalledLookAndFeels()) {
 					if ("Nimbus".equals(info.getName())) {
 						UIManager.setLookAndFeel(info.getClassName());
 						break;
-		        	}
-		    	}
+					}
+				}
 			} else {
 				throw new Exception();
 			}
 		} catch (Exception e) {
-				try {
-					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-				} catch (Exception ex) {
-				}
+			try {
+				UIManager.setLookAndFeel(UIManager
+						.getSystemLookAndFeelClassName());
+			} catch (Exception ex) {
+			}
 		}
 
 		data = new JTextPane();
@@ -162,23 +164,24 @@ public class mainPass {
 		modeltemp.add("Choose:");
 		modeltemp.add("System Info");
 		modeltemp.add("Two-way Converter");
-		if(Boolean.parseBoolean(Features.getProperty("legacy"))){
+		if (Boolean.parseBoolean(Features.getProperty("legacy"))) {
 			modeltemp.add("Binary to ...");
-			if(Boolean.parseBoolean(Features.getProperty("notworking"))) {
+			if (Boolean.parseBoolean(Features.getProperty("notworking"))) {
 				modeltemp.add("Binary Converter v2");
 			}
 		}
 		modeltemp.add("Calculator");
 		modeltemp.add("Console");
 		modeltemp.add("Letters-In-Phone-Numbers Decoder");
-		if(Boolean.parseBoolean(Features.getProperty("fakevirus"))) {
+		if (Boolean.parseBoolean(Features.getProperty("fakevirus"))) {
 			modeltemp.add("Fork Bomb");
 			modeltemp.add("Virus");
-			if(Boolean.parseBoolean(Features.getProperty("notworking"))) {
+			if (Boolean.parseBoolean(Features.getProperty("notworking"))) {
 				modeltemp.add("Dos/DDos (Not working)");
 			}
 		}
-		choices.setModel(new DefaultComboBoxModel<String>(modeltemp.toArray(new String[0])));
+		choices.setModel(new DefaultComboBoxModel<String>(modeltemp
+				.toArray(new String[0])));
 		choices.setBounds(56, 100, 300, 20);
 		choices.setOpaque(true);
 
