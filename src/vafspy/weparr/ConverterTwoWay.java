@@ -62,7 +62,7 @@ public class ConverterTwoWay extends JFrame implements ActionListener {
 		}
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
-				new mainPass();
+				new MainLoader();
 			}
 		});
 

@@ -46,7 +46,7 @@ public class PhoneNumberCoder extends JFrame {
 		}
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
-				new mainPass();
+				new MainLoader();
 			}
 		});
 		add(pnl);

@@ -56,7 +56,7 @@ public class CalculatorPage extends JFrame {
 		f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		f.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
-				new mainPass();
+				new MainLoader();
 			}
 		});
 		f.getContentPane().setLayout(null);

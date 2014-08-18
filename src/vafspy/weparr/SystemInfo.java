@@ -151,7 +151,7 @@ public class SystemInfo extends JFrame {
 		{
 		    public void windowClosing(WindowEvent e)
 		    {
-		        new mainPass();
+		        new MainLoader();
 		    }
 		});
 		try {

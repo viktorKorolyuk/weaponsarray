@@ -153,7 +153,7 @@ public class BinaryConverter extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new mainPass();
+				new MainLoader();
 				frame.dispose();
 			}
 		});
