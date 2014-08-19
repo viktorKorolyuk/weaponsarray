@@ -49,21 +49,23 @@ public class BinaryConverter2 extends JFrame {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		try {
-			if(Features.nimbus()) {
-				for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+			if (Features.nimbus()) {
+				for (LookAndFeelInfo info : UIManager
+						.getInstalledLookAndFeels()) {
 					if ("Nimbus".equals(info.getName())) {
 						UIManager.setLookAndFeel(info.getClassName());
 						break;
-		        	}
-		    	}
+					}
+				}
 			} else {
 				throw new Exception();
 			}
 		} catch (Exception e) {
-				try {
-					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-				} catch (Exception ex) {
-				}
+			try {
+				UIManager.setLookAndFeel(UIManager
+						.getSystemLookAndFeelClassName());
+			} catch (Exception ex) {
+			}
 		}
 
 		input = new JTextField();
