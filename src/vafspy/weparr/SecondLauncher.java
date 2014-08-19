@@ -58,7 +58,7 @@ public class SecondLauncher extends JFrame {
 
 	public SecondLauncher() {
 		super("Weapons Array");
-		setSize(500, 36);
+		setSize(500, 50);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		try {
 			if (Features.nimbus()) {
