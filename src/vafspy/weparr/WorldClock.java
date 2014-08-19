@@ -17,13 +17,13 @@ import javax.swing.JPanel;
 
 public class WorldClock {
 
-	//private static final long serialVersionUID = 1L;
+	// private static final long serialVersionUID = 1L;
 
 	public JFrame f = new JFrame("World Clock");
 
 	public JPanel btm = new JPanel();
 	public JPanel timezNow = new JPanel();
-	public JPanel timezThere = new JPanel();
+	public JPanel roughIpLoc = new JPanel();
 	public JLabel timeHere = new JLabel();
 	public Date date = new Date();
 	Thread run;
@@ -37,14 +37,15 @@ public class WorldClock {
 		f.getContentPane().setLayout(null);
 
 		timezNow.setBounds(0, 0, 400, 300);
+		timezNow.add(new JLabel("Your time:"));
 		timezNow.add(timeHere);
 		timezNow.setLayout(new BoxLayout(timezNow, BoxLayout.Y_AXIS));
 		timezNow.setBorder(BorderFactory.createRaisedBevelBorder());
 		timezNow.setBackground((Color.gray));
 
-		// timezThere.setSize(400, 300);
-		timezThere.setBorder(BorderFactory.createLoweredBevelBorder());
-		timezThere.setBackground(Color.red);
+		roughIpLoc.setBounds(400, 0, 400, 300);
+		roughIpLoc.setBorder(BorderFactory.createLoweredBevelBorder());
+		roughIpLoc.setBackground(Color.LIGHT_GRAY);
 
 		// top.setLayout(gridlayout);
 
@@ -53,6 +54,7 @@ public class WorldClock {
 		btm.setBackground(Color.darkGray);
 
 		f.add(timezNow);
+		f.add(roughIpLoc);
 		f.add(btm);
 		f.setBackground(Color.black);
 
