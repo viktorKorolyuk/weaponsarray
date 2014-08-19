@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.zip.GZIPInputStream;
 
 import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
@@ -95,18 +96,8 @@ public class mainPass {
 			}
 		});
 		main.add(quit);
-		URL resource = getClass().getResource("/resources/icon.wai");
-		File file;
-		FileInputStream input;
-		ImagePanel logo = null;
-		try {
-			file = new File(resource.toURI());
-			input = new FileInputStream(file);
-			logo = new ImagePanel(input);
+		JLabel logo = new JLabel(new ImageIcon(getClass().getResource("/resources/icon.png")));
 			logo.setBounds(400, 50, 200,200); // x ,y , height, length
-		} catch (FileNotFoundException | URISyntaxException e) {
-			e.printStackTrace();
-		}
 		JButton register = new JButton();
 		register.setText("Register 'Hacks'");
 		register.setEnabled(true);
