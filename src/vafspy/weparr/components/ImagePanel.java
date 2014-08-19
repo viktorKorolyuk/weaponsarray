@@ -32,9 +32,12 @@ public class ImagePanel extends JPanel {
 			width = width1 * width2 * width3 + width4;
 			height = height1 * height2 * height3 + height4;
 			setPreferredSize(new Dimension(width,height));
+			System.out.println(width + "  " + height);
+			System.out.println(dis.available());
 			while(dis.available() > 0) {
 				pixs.add(dis.readUnsignedByte());
 			}
+			System.out.println(pixs.size());
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {

@@ -5,7 +5,12 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
@@ -23,7 +28,7 @@ import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.text.StyledDocument;
 
-import vafspy.weparr.components.NoisePanel;
+import vafspy.weparr.components.ImagePanel;
 
 public class mainPass {
 	public JFrame frame;
@@ -90,28 +95,18 @@ public class mainPass {
 			}
 		});
 		main.add(quit);
-
-		JButton logo = new JButton();
+		URL resource = getClass().getResource("/resources/icon.wai");
+		File file;
+		FileInputStream input;
+		ImagePanel logo = null;
 		try {
-			Image img = ImageIO.read(this.getClass().getResource(
-					"/resources/icon.png"));
-			logo.setIcon(new ImageIcon(img));
-		} catch (IOException ex) {
+			file = new File(resource.toURI());
+			input = new FileInputStream(file);
+			logo = new ImagePanel(input);
+			logo.setBounds(400, 50, 200,200); // x ,y , height, length
+		} catch (FileNotFoundException | URISyntaxException e) {
+			e.printStackTrace();
 		}
-		logo.setEnabled(true);
-		logo.setBounds(400, 50, 185, 200); // x ,y , height, length
-		logo.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null,
-						"This Aplication Was Created By r0ut3rK3y", "Alert",
-						JOptionPane.INFORMATION_MESSAGE);
-
-			}
-
-		});
-
 		JButton register = new JButton();
 		register.setText("Register 'Hacks'");
 		register.setEnabled(true);
