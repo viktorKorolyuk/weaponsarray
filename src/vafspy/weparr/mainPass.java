@@ -5,8 +5,14 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.zip.GZIPInputStream;
 
 import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
@@ -16,11 +22,14 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.text.StyledDocument;
+
+import vafspy.weparr.components.ImagePanel;
 
 public class mainPass {
 	public JFrame frame;
@@ -33,6 +42,7 @@ public class mainPass {
 	public JTextField input2;
 	public StyledDocument document;
 	public JComboBox<String> choices;
+	JPanel main = new JPanel();
 
 	public static void main(String[] args) {
 		new mainPass();
@@ -42,7 +52,8 @@ public class mainPass {
 		frame = new JFrame();
 		frame.setTitle("Weapons array");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frame.add(main);
+		main.setLayout(null);
 
 		try {
 			if (Features.nimbus()) {
@@ -73,6 +84,7 @@ public class mainPass {
 		title.setText("Weapon Array");
 		title.setFont(new Font("Courier New", Font.BOLD, 20));
 		title.setBounds(70, 10, 700, 100);
+		title.setForeground(Color.white);
 
 		JButton quit = new JButton();
 		quit.setText("Quit");
@@ -83,29 +95,9 @@ public class mainPass {
 				frame.dispose();
 			}
 		});
-		frame.add(quit);
-
-		JButton logo = new JButton();
-		try {
-			Image img = ImageIO.read(this.getClass().getResource(
-					"/resources/icon.png"));
-			logo.setIcon(new ImageIcon(img));
-		} catch (IOException ex) {
-		}
-		logo.setEnabled(true);
-		logo.setBounds(400, 50, 185, 200); // x ,y , height, length
-		logo.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null,
-						"This Aplication Was Created By r0ut3rK3y", "Alert",
-						JOptionPane.INFORMATION_MESSAGE);
-
-			}
-
-		});
-
+		main.add(quit);
+		JLabel logo = new JLabel(new ImageIcon(getClass().getResource("/resources/icon.png")));
+			logo.setBounds(400, 50, 200,200); // x ,y , height, length
 		JButton register = new JButton();
 		register.setText("Register 'Hacks'");
 		register.setEnabled(true);
@@ -191,14 +183,13 @@ public class mainPass {
 
 			}
 		});
-		frame.add(choices);
-		frame.add(title);
-		frame.add(logo);
-		frame.add(register);
-		frame.add(data);
+		main.add(choices);
+		main.add(title);
+		main.add(logo);
+		main.add(register);
+		main.add(data);
 		frame.setSize(660, 380);
-		frame.getContentPane().setBackground(new Color(163, 163, 163));
-		frame.setLocationRelativeTo(null);
+		main.setBackground(new Color(163, 163, 163));
 		frame.setResizable(false);
 		frame.setVisible(true);
 	}
