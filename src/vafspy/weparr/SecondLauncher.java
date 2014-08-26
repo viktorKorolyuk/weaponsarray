@@ -34,6 +34,7 @@ public class SecondLauncher extends JFrame {
 	public void loadOptions() {
 		ArrayList<String> modeltemp = new ArrayList<String>();
 		modeltemp.add("Choose:");
+		modeltemp.add("Adv. Math Calculator");
 		modeltemp.add("System Info");
 		modeltemp.add("Two-way Converter");
 		if (Boolean.parseBoolean(Features.getProperty("legacy"))) {
@@ -123,6 +124,10 @@ public class SecondLauncher extends JFrame {
 					break;
 				case "Letters-In-Phone-Numbers Decoder":
 					new PhoneNumberCoder();
+					dispose();
+					break;
+				case "Adv. Math Calculator":
+					new StringCalculator();
 					dispose();
 					break;
 				default:
