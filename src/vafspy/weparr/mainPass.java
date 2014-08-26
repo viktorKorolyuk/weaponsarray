@@ -29,8 +29,6 @@ import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.text.StyledDocument;
 
-import vafspy.weparr.components.ImagePanel;
-
 public class mainPass {
 	public JFrame frame;
 
