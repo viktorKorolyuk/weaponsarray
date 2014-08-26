@@ -38,7 +38,7 @@ public class WorldClock {
 		f.getContentPane().setLayout(null);
 
 		timeHere.setFont((new Font("Courier New", Font.BOLD, 50)));
-		timeHere.setText("hi");
+		
 		
 		timezNow.setBounds(0, 0, 400, 300);
 		timezNow.add(new JLabel("Your time:"));
