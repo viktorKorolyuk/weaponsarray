@@ -1,6 +1,7 @@
 package vafspy.weparr;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.util.Date;
 
 import javax.swing.BorderFactory;
@@ -36,6 +37,9 @@ public class WorldClock {
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.getContentPane().setLayout(null);
 
+		timeHere.setFont((new Font("Courier New", Font.BOLD, 50)));
+		timeHere.setText("hi");
+		
 		timezNow.setBounds(0, 0, 400, 300);
 		timezNow.add(new JLabel("Your time:"));
 		timezNow.add(timeHere);
@@ -87,6 +91,8 @@ public class WorldClock {
 
 				timeHere.setText(strHr + ":" + strMin + ":" + strSec);
 
+		
+				
 				// Check if it works
 				// System.out.println(strDate);
 			}

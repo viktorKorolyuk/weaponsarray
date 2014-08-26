@@ -12,8 +12,6 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
-import vafspy.weparr.InputStream;
-
 public class ImagePanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	ArrayList<Integer> pixs = new ArrayList<Integer>();
@@ -50,9 +48,9 @@ public class ImagePanel extends JPanel {
 			}
 		}
 	}
-	public ImagePanel(InputStream input) {
+//	public ImagePanel(InputStream input) {
 		// TODO Auto-generated constructor stub
-	}
+//	}
 	@Override
 	public void paintComponent(Graphics comp) {
 		super.paintComponent(comp);
