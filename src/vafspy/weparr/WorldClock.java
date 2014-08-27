@@ -1,6 +1,7 @@
 package vafspy.weparr;
 
 import java.awt.Color;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.swing.BorderFactory;
@@ -14,7 +15,7 @@ import javax.swing.JPanel;
  * @author viktor
  * 
  */
-
+// NOTE TO VIKTOR: I fixed a bit of the time-getting code.
 public class WorldClock {
 
 	//private static final long serialVersionUID = 1L;
@@ -69,24 +70,51 @@ public class WorldClock {
 	}
 
 	class mytimers implements Runnable {
-
 		@Override
 		public void run() {
+			Calendar calendar = Calendar.getInstance();
+			
 			while (true) {
-				date = new Date(); // This refreshes the date
-				int strSecInt = date.getSeconds();
-				String strSec = Integer.toString(strSecInt);
-
-				int strMinInt = date.getMinutes();
-				String strMin = Integer.toString(strMinInt);
-
-				int strHrInt = date.getHours();
-				String strHr = Integer.toString(strHrInt - 12);
-
-				timeHere.setText(strHr + ":" + strMin + ":" + strSec);
-
-				// Check if it works
-				// System.out.println(strDate);
+				calendar.setTime(new Date());
+				int hours = calendar.get(Calendar.HOUR_OF_DAY);
+				int minutes = calendar.get(Calendar.MINUTE);
+				int seconds = calendar.get(Calendar.SECOND);
+				String strSec = Integer.toString(seconds);
+				String strMin = Integer.toString(minutes);
+				boolean pm = false;
+				boolean isampm = true;
+				if(hours == 12 && minutes == 0 || hours == 24 && minutes == 0) {
+					/*
+					 * If it is 12:00, set isampm to false.
+					 * This is because 12:00 is never AM or PM. This switches it
+					 * so that it uses "MIDNIGHT" and "NOON" instead.
+					 * Please read more on the GMT website: http://tiny.cc/gmtAMPM
+					 */
+					isampm = false;
+				}
+				if(hours > 12) {
+					/*
+					 * This section checks if it is PM (hours > 12) and if so, it subtracts
+					 * 12 from the hours variable, and sets pm to true, which signifies
+					 * that it is either PM or MIDNIGHT.
+					 */
+					hours = hours - 12;
+					pm = true;
+				}
+				String strHr = Integer.toString(hours);
+				/*
+				 * Use AM and PM times (or NOON and MIDNIGHT)
+				 * The statement to check AM/PM/NOON/MIDNIGHT is as follows:
+				 * (isampm ? (pm ? " PM" : " AM") : (pm ? " MIDNIGHT" : " NOON"))
+				 * this means the following:
+				 * if isampm, go to the AM/PM switch
+				 * otherwise, go to the NOON/MIDNIGHT switch
+				 * The AM/PM switch is as follows: '(pm ? " PM" : " AM")' and means:
+				 * if is pm, add " PM" to the string, otherwise add " AM"
+				 * The NOON/MIDNIGHT switch is as follows: '(pm ? " MIDNIGHT" : " NOON")' and means:
+				 * if is pm, add " MIDNIGHT" to the string, otherwise add " NOON"
+				 */
+				timeHere.setText(strHr + ":" + strMin + ":" + strSec + (isampm ? (pm ? " PM" : " AM") : (pm ? " MIDNIGHT" : " NOON")));
 			}
 
 		}
