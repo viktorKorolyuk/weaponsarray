@@ -53,6 +53,9 @@ public class SecondLauncher extends JFrame {
 				modeltemp.add("Dos/DDos (Not working)");
 			}
 		}
+		if (Boolean.parseBoolean(Features.getProperty("indev"))) {
+			modeltemp.add("World Clock");
+		}
 		selection.setModel(new DefaultComboBoxModel<String>(modeltemp
 				.toArray(new String[0])));
 	}
@@ -128,6 +131,10 @@ public class SecondLauncher extends JFrame {
 					break;
 				case "Adv. Math Calculator":
 					new StringCalculator();
+					dispose();
+					break;
+				case "World Clock":
+					new WorldClock();
 					dispose();
 					break;
 				default:
