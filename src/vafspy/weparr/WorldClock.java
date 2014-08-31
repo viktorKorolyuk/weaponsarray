@@ -15,7 +15,6 @@ import javax.swing.JPanel;
  * @author viktor
  * 
  */
-// NOTE TO VIKTOR: I fixed a bit of the time-getting code.
 public class WorldClock {
 
 	//private static final long serialVersionUID = 1L;
