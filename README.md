@@ -6,7 +6,9 @@ Weapons Array is a java-based project designed with hacker-ish tools. It is not 
 * other notes go here in this format.
 
 # TODO
-* something
-* else
-* to
-* do
+* World Clock [viktor]
+* More Powerful Math [ethan]
+* Node.js evaluator
+* python evaluator
+* js evaluator
+* perl evaluator
