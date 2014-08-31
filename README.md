@@ -4,3 +4,5 @@ Weapons Array is a java-based project designed with hacker-ish tools. It is not 
 # Notes to each other (put your notes to each other here(duh))
 * from ethan: I just added a simple website for weapons array, hosted on bitbucket. The repo is vkhsoft.bitbucket.org , and bitbucket recognizes this and allows you to visit it at http://vkhsoft.bitbucket.org . It just has a little features list for Weapons Array, no downloads of course! DELETE THIS NOTE ONCE YOU HAVE READ IT!
 * other notes go here in this format.
+
+# TODO
