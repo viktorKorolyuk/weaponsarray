@@ -127,7 +127,7 @@ public class SystemInfo extends JFrame {
 		}
 		catch (Exception e) {
 			groupslist = new String[1];
-			groupslist[1] = "ERROR READING GROUPS!";
+			groupslist[0] = "ERROR READING GROUPS!";
 			grpslst = "ERROR READING GROUPS!";
 		}
 		primgrp = new JLabel(" Primary Group: " + groupslist[0]);
