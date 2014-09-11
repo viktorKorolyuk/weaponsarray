@@ -34,6 +34,7 @@ public class SecondLauncher extends JFrame {
 	public void loadOptions() {
 		ArrayList<String> modeltemp = new ArrayList<String>();
 		modeltemp.add("Choose:");
+		modeltemp.add("Games");
 		modeltemp.add("Adv. Math Calculator");
 		modeltemp.add("System Info");
 		modeltemp.add("Two-way Converter");
@@ -135,6 +136,10 @@ public class SecondLauncher extends JFrame {
 					break;
 				case "World Clock":
 					new WorldClock();
+					dispose();
+					break;
+				case "Games":
+					new Games();
 					dispose();
 					break;
 				default:
