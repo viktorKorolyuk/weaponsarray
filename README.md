@@ -11,4 +11,4 @@ Weapons Array is a java-based project designed with hacker-ish tools. It is not 
 * python evaluator
 * js evaluator
 * perl evaluator
-* Rouph Ip location tracer [Viktor]
+* Rough Ip location tracer [Viktor]
