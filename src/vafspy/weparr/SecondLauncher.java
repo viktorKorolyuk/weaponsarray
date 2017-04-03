@@ -57,8 +57,7 @@ public class SecondLauncher extends JFrame {
 		if (Boolean.parseBoolean(Features.getProperty("indev"))) {
 			modeltemp.add("World Clock");
 		}
-		selection.setModel(new DefaultComboBoxModel<String>(modeltemp
-				.toArray(new String[0])));
+		selection.setModel(new DefaultComboBoxModel<String>(modeltemp.toArray(new String[0])));
 	}
 
 	public SecondLauncher() {
@@ -67,8 +66,7 @@ public class SecondLauncher extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		try {
 			if (Features.nimbus()) {
-				for (LookAndFeelInfo info : UIManager
-						.getInstalledLookAndFeels()) {
+				for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
 					if ("Nimbus".equals(info.getName())) {
 						UIManager.setLookAndFeel(info.getClassName());
 						break;
@@ -79,8 +77,7 @@ public class SecondLauncher extends JFrame {
 			}
 		} catch (Exception e) {
 			try {
-				UIManager.setLookAndFeel(UIManager
-						.getSystemLookAndFeelClassName());
+				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 			} catch (Exception ex) {
 			}
 		}
@@ -114,16 +111,10 @@ public class SecondLauncher extends JFrame {
 					dispose();
 					break;
 				case "Virus":
-					JOptionPane
-							.showMessageDialog(
-									null,
-									"This Is VERY dangerous if handled incorrectly \n and I am not Responsible for any damage done",
-									"Alert", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null,
+							"This Is VERY dangerous if handled incorrectly \n and I am not Responsible for any damage done",
+							"Alert", JOptionPane.INFORMATION_MESSAGE);
 					new virus_create();
-					dispose();
-					break;
-				case "Binary Converter v2":
-					new BinaryConverter2();
 					dispose();
 					break;
 				case "Letters-In-Phone-Numbers Decoder":
@@ -163,9 +154,8 @@ public class SecondLauncher extends JFrame {
 		setVisible(true);
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] arg) {
 		new SecondLauncher();
-
 	}
 
 }
@@ -180,8 +170,7 @@ class SecondLauncherInfo extends JFrame {
 		super("Help/Info");
 		setSize(500, 250);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		area.setEditorKit(JEditorPane
-				.createEditorKitForContentType("text/html"));
+		area.setEditorKit(JEditorPane.createEditorKitForContentType("text/html"));
 		area.setEditable(false);
 		area.addHyperlinkListener(new HyperlinkListener() {
 			public void hyperlinkUpdate(HyperlinkEvent e) {
@@ -199,8 +188,7 @@ class SecondLauncherInfo extends JFrame {
 				}
 			}
 		});
-		java.net.URL infourl = getClass()
-				.getResource("/resources/infodoc.html");
+		java.net.URL infourl = getClass().getResource("/resources/infodoc.html");
 		if (infourl != null) {
 			try {
 				area.setPage(infourl);

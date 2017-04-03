@@ -33,7 +33,7 @@ public class mainPass {
 	public JComboBox<String> choices;
 	JPanel main = new JPanel();
 
-	public static void main(String[] args) {
+	public static void main(String[] arg) {
 		new mainPass();
 	}
 
@@ -125,10 +125,6 @@ public class mainPass {
 					new virus_create();
 					frame.dispose();
 					break;
-				case "Binary Converter v2":
-					new BinaryConverter2();
-					frame.dispose();
-					break;
 				case "Letters-In-Phone-Numbers Decoder":
 					new PhoneNumberCoder();
 					frame.dispose();
@@ -182,5 +178,6 @@ public class mainPass {
 		frame.setResizable(false);
 		frame.setVisible(true);
 	}
+
 
 }
