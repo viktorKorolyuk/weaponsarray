@@ -7,6 +7,11 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -19,6 +24,8 @@ import javax.swing.JTextPane;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.text.StyledDocument;
+
+import vafspy.weparr.customCode.Draggable;
 
 public class BinaryConverter extends JFrame {
 	// Add a serialVersionUID: Takes care of those pesky warnings!
@@ -34,6 +41,7 @@ public class BinaryConverter extends JFrame {
 	public JTextField input2;
 	public StyledDocument document;
 	public Color textColor = Color.decode("#eeeeee");
+	public JButton btnQuit, btnBack;
 
 	public static void main(String[] args) {
 		new BinaryConverter();
@@ -44,8 +52,10 @@ public class BinaryConverter extends JFrame {
 		frame.setTitle("Binary Converter v1.5");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		frame.setUndecorated(true); //my favorite piece of code
-		
+		frame.setUndecorated(true); // my favorite piece of code
+
+		frame.setSize(660, 380);
+
 		try {
 			if (Features.nimbus()) {
 				for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -60,7 +70,8 @@ public class BinaryConverter extends JFrame {
 		} catch (Exception e) {
 			try {
 				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-			} catch (Exception ex) {}
+			} catch (Exception ex) {
+			}
 		}
 
 		title = new JLabel();
@@ -68,7 +79,7 @@ public class BinaryConverter extends JFrame {
 		title.setFont(new Font("Sans Serif", Font.BOLD, 35));
 		title.setForeground(textColor);
 		title.setBounds(78, 10, 500, 100);
-		
+
 		data = new JTextPane();
 		data.setEditable(false);
 		data.setBounds(78, 230, 450, 100);
@@ -107,7 +118,7 @@ public class BinaryConverter extends JFrame {
 				input2.setText("");
 			}
 		});
-		
+
 		input2 = new JTextField();
 		input2.setEditable(true);
 		input2.setBounds(300, 131, 194, 25);
@@ -120,18 +131,7 @@ public class BinaryConverter extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String binary2 = input2.getText();
 				try {
-
-					int i = Integer.parseInt(binary2); // hex to decimal
-					String binary3 = Integer.toHexString(i); // decimal to
-																// binary
-					try {
-						input2.setText("");
-					} catch (Exception ex) {
-					}
-					data.setText("");
-					data.setText(binary3);
-					input2.selectAll();
-					input.setText("");
+					calculateHex(binary2);
 				} catch (Exception ex) {
 					JOptionPane.showMessageDialog(null,
 							"Error: " + ex.getMessage() + " Please put digits as numbers do not work", "Alert",
@@ -147,9 +147,47 @@ public class BinaryConverter extends JFrame {
 		bin2 = new JLabel("hex->dec");
 		bin2.setBounds(300, 104, 80, 30);
 		bin2.setForeground(textColor);
-		
-		JButton btnBack = new JButton("Back");
-		btnBack.setBounds(540, 250, 100, 50);
+
+		btnBack = new JButton("Back");
+		btnBack.setBounds(frame.getWidth() - 200, 0, 100, 30);
+		btnBack.setOpaque(true);
+		btnBack.setBorder(null);
+		btnBack.setBackground(Color.decode("#555555"));
+		btnBack.setForeground(textColor);
+
+		btnBack.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				btnBack.setBackground(Color.decode("#555555"));
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				btnBack.setBackground(Color.decode("#444444"));
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
 		btnBack.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -160,8 +198,47 @@ public class BinaryConverter extends JFrame {
 
 		frame.add(btnBack);
 
-		JButton btnQuit = new JButton("Quit");
-		btnQuit.setBounds(540, 310, 100, 50);
+		btnQuit = new JButton("Quit");
+		btnQuit.setBounds(frame.getWidth() - 100, 0, 100, 30);
+		btnQuit.setOpaque(true);
+		btnQuit.setBorder(null);
+		btnQuit.setBackground(Color.decode("#ff6666"));
+		btnQuit.setForeground(textColor);
+
+		btnQuit.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				btnQuit.setBackground(Color.decode("#ff6666"));
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				btnQuit.setBackground(Color.decode("#444444"));
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+
 		btnQuit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -179,17 +256,7 @@ public class BinaryConverter extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String binary1 = input.getText();
 				try {
-					int i = Integer.parseInt(binary1); // hex to decimal
-					String binary = Integer.toBinaryString(i); // decimal to
-																// binary
-					try {
-						input.setText("");
-					} catch (Exception ex) {
-					}
-					data.setText("");
-					data.setText(binary);
-					input.selectAll();
-					input2.setText("");
+					calculateBin(binary1);
 				} catch (Exception ex) {
 					JOptionPane.showMessageDialog(null,
 							"Error: " + ex.getMessage() + "Please put digits as numbers do not work", "Alert",
@@ -198,7 +265,6 @@ public class BinaryConverter extends JFrame {
 			}
 		});
 
-		
 		JButton btnGen2 = new JButton("Generate Hex");
 		btnGen2.setBounds(300, 168, 150, 25);
 		btnGen2.addActionListener(new ActionListener() {
@@ -206,17 +272,7 @@ public class BinaryConverter extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String binary2 = input2.getText();
 				try {
-					int i = Integer.parseInt(binary2); // hex to decimal
-					String binary3 = Integer.toHexString(i); // decimal to
-																// binary
-					try {
-						input2.setText("");
-					} catch (Exception ex) {
-					}
-					data.setText("");
-					data.setText(binary3);
-					input2.selectAll();
-					input.setText("");
+					calculateHex(binary2);
 				} catch (Exception ex) {
 					JOptionPane.showMessageDialog(null,
 							"Error: " + ex.getMessage() + " Please put digits as numbers do not work", "Alert",
@@ -225,7 +281,7 @@ public class BinaryConverter extends JFrame {
 				input2.selectAll();
 			}
 		});
-		
+
 		frame.getContentPane().add(btnGen);
 		frame.getContentPane().add(btnGen2);
 		frame.add(input, BorderLayout.SOUTH);
@@ -234,12 +290,35 @@ public class BinaryConverter extends JFrame {
 		frame.getContentPane().add(title);
 		frame.getContentPane().add(bin);
 		frame.getContentPane().add(bin2);
-		frame.setSize(660, 380);
 		frame.setResizable(false);
 		frame.setVisible(true);
 		frame.getContentPane().setBackground(Color.decode("#333333"));
-		
+
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-		frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
+		frame.setLocation(dim.width / 2 - frame.getSize().width / 2, dim.height / 2 - frame.getSize().height / 2);
+
+		new Draggable(frame); // make a new draggable instance
+	}
+
+	void calculateHex(String binary2) {
+		int i = Integer.parseInt(binary2); // hex to decimal
+		String binary3 = Integer.toHexString(i); // decimal to
+
+		input2.setText("");
+		data.setText("");
+		data.setText(binary3);
+		input2.selectAll();
+		input.setText("");
+	}
+
+	void calculateBin(String binary1) {
+		int i = Integer.parseInt(binary1); // hex to decimal
+		String binary = Integer.toBinaryString(i); // decimal to
+													// binary
+		input.setText("");
+		data.setText("");
+		data.setText(binary);
+		input.selectAll();
+		input2.setText("");
 	}
 }
