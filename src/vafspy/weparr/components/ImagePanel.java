@@ -16,6 +16,7 @@ public class ImagePanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	ArrayList<Integer> pixs = new ArrayList<Integer>();
 	int width, height;
+
 	public ImagePanel(FileInputStream image) {
 		super();
 		BufferedInputStream buf = new BufferedInputStream(image);
@@ -31,10 +32,10 @@ public class ImagePanel extends JPanel {
 			int height4 = dis.readUnsignedByte();
 			width = width1 * width2 * width3 + width4;
 			height = height1 * height2 * height3 + height4;
-			setPreferredSize(new Dimension(width,height));
+			setPreferredSize(new Dimension(width, height));
 			System.out.println(width + "  " + height);
 			System.out.println(dis.available());
-			while(dis.available() > 0) {
+			while (dis.available() > 0) {
 				pixs.add(dis.readUnsignedByte());
 			}
 			System.out.println(pixs.size());
@@ -48,20 +49,21 @@ public class ImagePanel extends JPanel {
 			}
 		}
 	}
-//	public ImagePanel(InputStream input) {
-		// TODO Auto-generated constructor stub
-//	}
+
+	// public ImagePanel(InputStream input) {
+	// TODO Auto-generated constructor stub
+	// }
 	@Override
 	public void paintComponent(Graphics comp) {
 		super.paintComponent(comp);
 		Graphics2D g = (Graphics2D) comp;
 		int i = 0;
 		int l = 0;
-		while(i < width) {
+		while (i < width) {
 			int j = 0;
-			while(j < height) {
+			while (j < height) {
 				int cv = pixs.get(l);
-				g.setColor(new Color(cv,cv,cv));
+				g.setColor(new Color(cv, cv, cv));
 				g.drawRect(i, j, 1, 1);
 				j++;
 				l++;

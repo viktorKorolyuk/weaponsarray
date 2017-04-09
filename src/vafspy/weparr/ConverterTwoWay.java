@@ -28,11 +28,9 @@ public class ConverterTwoWay extends JFrame implements ActionListener {
 	JPanel pnl = new JPanel();
 	// Now, add the drop-downs area.
 	JLabel typelabel = new JLabel("Conversion:");
-	JComboBox<String> frombox = new JComboBox<String>(new String[] { "bin",
-			"hex", "dec", "oct" });
+	JComboBox<String> frombox = new JComboBox<String>(new String[] { "bin", "hex", "dec", "oct" });
 	JLabel tolabel = new JLabel("to");
-	JComboBox<String> tobox = new JComboBox<String>(new String[] { "bin",
-			"hex", "dec", "oct" });
+	JComboBox<String> tobox = new JComboBox<String>(new String[] { "bin", "hex", "dec", "oct" });
 	JLabel fromfieldtxt = new JLabel("Data to convert:");
 	JTextField fromtext = new JTextField(10);
 	// Now, the convert button!
@@ -44,21 +42,21 @@ public class ConverterTwoWay extends JFrame implements ActionListener {
 		setSize(250, 95);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		try {
-			if(Features.nimbus()) {
+			if (Features.nimbus()) {
 				for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
 					if ("Nimbus".equals(info.getName())) {
 						UIManager.setLookAndFeel(info.getClassName());
 						break;
-		        	}
-		    	}
+					}
+				}
 			} else {
 				throw new Exception();
 			}
 		} catch (Exception e) {
-				try {
-					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-				} catch (Exception ex) {
-				}
+			try {
+				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			} catch (Exception ex) {
+			}
 		}
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
@@ -88,10 +86,16 @@ public class ConverterTwoWay extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		// Convert and show!
 		try {
-			String converted = cnv.convert((String) frombox.getSelectedItem(), (String) tobox.getSelectedItem(), fromtext.getText());
-			JOptionPane.showMessageDialog(this, "Original(in " + frombox.getSelectedItem() + "): " + fromtext.getText() + "  Converted to " + tobox.getSelectedItem() + ": " + converted, "Conversion results", JOptionPane.PLAIN_MESSAGE);
+			String converted = cnv.convert((String) frombox.getSelectedItem(), (String) tobox.getSelectedItem(),
+					fromtext.getText());
+			JOptionPane.showMessageDialog(this,
+					"Original(in " + frombox.getSelectedItem() + "): " + fromtext.getText() + "  Converted to "
+							+ tobox.getSelectedItem() + ": " + converted,
+					"Conversion results", JOptionPane.PLAIN_MESSAGE);
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Number formatting error! Number may be too long or in incorrect format.", "Conversion Error.", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null,
+					"Number formatting error! Number may be too long or in incorrect format.", "Conversion Error.",
+					JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }

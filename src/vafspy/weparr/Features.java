@@ -10,8 +10,7 @@ public class Features {
 	public static void load() {
 		if (!isloaded) {
 			try {
-				features.load(new Features().getClass().getResourceAsStream(
-						"/resources/features.properties"));
+				features.load(new Features().getClass().getResourceAsStream("/resources/features.properties"));
 				isloaded = true;
 			} catch (IOException e2) {
 				e2.printStackTrace();

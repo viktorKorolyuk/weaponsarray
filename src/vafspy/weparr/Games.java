@@ -13,6 +13,7 @@ public class Games extends JFrame {
 	private static final long serialVersionUID = 1L;
 	JPanel pnl = new JPanel();
 	JButton rps = new JButton("Rock Paper Scissors");
+
 	public Games() {
 		super("WeaponsArray Games");
 		setSize(500, 200);
@@ -23,18 +24,19 @@ public class Games extends JFrame {
 			}
 		});
 		add(pnl);
-		rps.addActionListener(new ActionListener(){
+		rps.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new RockPaperScissors();
 				dispose();
 			}
-			
+
 		});
 		pnl.add(rps);
 		setVisible(true);
 	}
+
 	public static void main(String[] args) {
 		new Games();
 	}

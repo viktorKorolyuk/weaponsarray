@@ -29,27 +29,26 @@ public class CalculatorPage extends JFrame {
 	public JLabel answerlbl;
 
 	public static void main(String[] args) {
-
 		new CalculatorPage();
 	}
 
 	public CalculatorPage() {
 		try {
-			if(Features.nimbus()) {
+			if (Features.nimbus()) {
 				for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
 					if ("Nimbus".equals(info.getName())) {
 						UIManager.setLookAndFeel(info.getClassName());
 						break;
-		        	}
-		    	}
+					}
+				}
 			} else {
 				throw new Exception();
 			}
 		} catch (Exception e) {
-				try {
-					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-				} catch (Exception ex) {
-				}
+			try {
+				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			} catch (Exception ex) {
+			}
 		}
 		f = new JFrame();
 		f.setTitle("CalcUlatorz");
@@ -83,8 +82,8 @@ public class CalculatorPage extends JFrame {
 		});
 
 		op = new JComboBox<>();
-		op.setModel(new DefaultComboBoxModel<String>(new String[] { "Choose:",
-				"Add: +", "Subtract: -", "Divide: %", "Multyply: x" }));
+		op.setModel(new DefaultComboBoxModel<String>(
+				new String[] { "Choose:", "Add: +", "Subtract: -", "Divide: %", "Multyply: x" }));
 		op.setBounds(120, 30, 130, 50);
 
 		op.setOpaque(true);
@@ -138,13 +137,10 @@ public class CalculatorPage extends JFrame {
 			String finalnumb = Integer.toString(finalnum);
 			answer.setText(finalnumb);
 		} catch (Exception ex) {
-			JOptionPane
-					.showMessageDialog(
-							null,
-							"Error --> "
-									+ ex
-									+ " In short Form the digit was too big and/or you used a letter or any other key that isnt a number",
-							"Alert :(", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null,
+					"Error --> " + ex
+							+ " In short Form the digit was too big and/or you used a letter or any other key that isnt a number",
+					"Alert :(", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 
@@ -161,13 +157,10 @@ public class CalculatorPage extends JFrame {
 			String finalnumb = Integer.toString(finalnum);
 			answer.setText(finalnumb);
 		} catch (Exception ex) {
-			JOptionPane
-					.showMessageDialog(
-							null,
-							"Error --> "
-									+ ex
-									+ " In short Form the digit was too big and/or you used a letter or any other key that isnt a number",
-							"Alert :(", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null,
+					"Error --> " + ex
+							+ " In short Form the digit was too big and/or you used a letter or any other key that isnt a number",
+					"Alert :(", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 
@@ -184,13 +177,10 @@ public class CalculatorPage extends JFrame {
 			String finalnumb = Integer.toString(finalnum);
 			answer.setText(finalnumb);
 		} catch (Exception ex) {
-			JOptionPane
-					.showMessageDialog(
-							null,
-							"Error --> "
-									+ ex
-									+ " In short Form the digit was too big and/or you used a letter or any other key that isnt a number",
-							"Alert :(", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null,
+					"Error --> " + ex
+							+ " In short Form the digit was too big and/or you used a letter or any other key that isnt a number",
+					"Alert :(", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 
@@ -207,13 +197,10 @@ public class CalculatorPage extends JFrame {
 			String finalnumb = Integer.toString(finalnum);
 			answer.setText(finalnumb);
 		} catch (Exception ex) {
-			JOptionPane
-					.showMessageDialog(
-							null,
-							"Error --> "
-									+ ex
-									+ " In short Form the digit was too big and/or you used a letter or any other key that isnt a number",
-							"Alert :(", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null,
+					"Error --> " + ex
+							+ " In short Form the digit was too big and/or you used a letter or any other key that isnt a number",
+					"Alert :(", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 

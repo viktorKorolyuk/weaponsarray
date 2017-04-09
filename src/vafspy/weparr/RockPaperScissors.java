@@ -25,6 +25,10 @@ public class RockPaperScissors extends JFrame {
 	JButton scissors = new JButton("Scissors");
 	RPSUI ui;
 
+	public static void main(String[] args) {
+		new RockPaperScissors();
+	}
+
 	public RockPaperScissors() {
 		super("Rock Paper Scissors [best 2 out of 3]");
 		// Rock Paper Scissors does NOT set it's own look and feel for sizing
@@ -43,33 +47,34 @@ public class RockPaperScissors extends JFrame {
 		jta.setFont(new Font("Monospaced", Font.PLAIN, 12));
 		p.add(jta);
 		setRPSEnabled(false);
-		rock.addActionListener(new ActionListener(){
+		rock.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				select = 0;
 				latch.countDown();
 			}
-			
+
 		});
-		paper.addActionListener(new ActionListener(){
+		paper.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				select = 1;
 				latch.countDown();
 			}
-			
+
 		});
-		scissors.addActionListener(new ActionListener(){
+		scissors.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				select = 2;
 				latch.countDown();
 			}
-			
+
 		});
+
 		p.add(rock);
 		p.add(paper);
 		p.add(scissors);
@@ -83,10 +88,6 @@ public class RockPaperScissors extends JFrame {
 
 	}
 
-	public static void main(String[] args) {
-		new RockPaperScissors();
-	}
-
 	private void play() {
 		ui = new RPSUI();
 		ui.clear(jta);
@@ -97,13 +98,13 @@ public class RockPaperScissors extends JFrame {
 		int user, enemy, userselect, enemyselect;
 		String nme, usr;
 		user = enemy = userselect = enemyselect = 0;
-		while(!over) {
+		while (!over) {
 			userselect = select();
 			Random r = new Random();
 			int low = 0;
 			int high = 2;
-			enemyselect = r.nextInt(high-low) + low;
-			switch(enemyselect) {
+			enemyselect = r.nextInt(high - low) + low;
+			switch (enemyselect) {
 			case 0:
 				nme = "rock";
 				break;
@@ -117,7 +118,7 @@ public class RockPaperScissors extends JFrame {
 				nme = "ERROR OCCURRED!";
 				break;
 			}
-			switch(userselect) {
+			switch (userselect) {
 			case 0:
 				usr = "rock";
 				break;
@@ -134,7 +135,8 @@ public class RockPaperScissors extends JFrame {
 			ui.println(jta, "You chose " + usr + ", and the comp chose " + nme + "...");
 			try {
 				Thread.sleep(500);
-			} catch(InterruptedException e) {}
+			} catch (InterruptedException e) {
+			}
 			if (userselect == enemyselect) {
 				user++;
 				enemy++;
@@ -154,7 +156,8 @@ public class RockPaperScissors extends JFrame {
 			ui.setScores(jta, user, enemy);
 			try {
 				Thread.sleep(500);
-			} catch(InterruptedException e) {}
+			} catch (InterruptedException e) {
+			}
 			if (userselect == enemyselect) {
 				ui.println(jta, "DRAW: YOU AND COMP BOTH GAIN 1 POINT");
 			} else if (userselect == 0 && enemyselect == 1) {
@@ -170,11 +173,11 @@ public class RockPaperScissors extends JFrame {
 			} else if (userselect == 2 && enemyselect == 1) {
 				ui.println(jta, "scissors cut paper, YOU GAIN ONE POINT");
 			}
-			if(user == enemy - 2) {
+			if (user == enemy - 2) {
 				over = true;
 				ui.println(jta, "COMP WINS!!!");
 			}
-			if(enemy == user - 2) {
+			if (enemy == user - 2) {
 				over = true;
 				ui.println(jta, "YOU WIN!!!");
 			}
@@ -182,20 +185,22 @@ public class RockPaperScissors extends JFrame {
 		ui.println(jta, "Press a button to play again.");
 		select();
 	}
+
 	private int select() {
 		latch = new CountDownLatch(1);
 		ui.println(jta, "Choose rock/paper/scissors:");
 		ui.setTakingInput(jta, true);
 		setRPSEnabled(true);
 		try {
-            latch.await();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+			latch.await();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		ui.setTakingInput(jta, false);
 		setRPSEnabled(false);
 		return select;
 	}
+
 	private void setRPSEnabled(boolean tf) {
 		rock.setEnabled(tf);
 		paper.setEnabled(tf);
@@ -228,22 +233,19 @@ class RPSUI {
 		return console;
 	}
 
-	private String renderStats() {
-		return "USER: " + score_user + (score_user.length() > 1 ? "" : " ")
-				+ "    |    COMP:  " + score_comp
-				+ (score_comp.length() > 1 ? "" : " ")
-				+ "      |    TAKING INPUT: " + taking_input;
-	}
-
 	private void update(JTextArea jta) {
-		jta.setText(renderConsole()
-				+ "------------------------------------------------------------------\n       "
+		jta.setText(renderConsole() + "------------------------------------------------------------------\n       "
 				+ renderStats() + "       ");
 	}
 
+	// called as pre-made template
+	private String renderStats() {
+		return "USER: " + score_user + (score_user.length() > 1 ? "" : " ") + "    |    COMP:  " + score_comp
+				+ (score_comp.length() > 1 ? "" : " ") + "      |    TAKING INPUT: " + taking_input;
+	}
+
 	private String insertper(String text, String insert, int period) {
-		StringBuilder builder = new StringBuilder(text.length()
-				+ insert.length() * (text.length() / period) + 1);
+		StringBuilder builder = new StringBuilder(text.length() + insert.length() * (text.length() / period) + 1);
 
 		int index = 0;
 		String prefix = "";
@@ -252,19 +254,18 @@ class RPSUI {
 			// This is easier than appending it *after* each substring
 			builder.append(prefix);
 			prefix = insert;
-			builder.append(text.substring(index,
-					Math.min(index + period, text.length())));
+			builder.append(text.substring(index, Math.min(index + period, text.length())));
 			index += period;
 		}
 		return builder.toString();
 	}
-	
+
 	private String[] shiftArray(String[] a, int howmany) {
 		int i = 0;
-		while(i < howmany) {
+		while (i < howmany) {
 			int j = 0;
-			while(j < a.length) {
-				if(j == a.length - 1) {
+			while (j < a.length) {
+				if (j == a.length - 1) {
 					a[j] = "";
 				} else {
 					a[j] = a[j + 1];
@@ -281,13 +282,13 @@ class RPSUI {
 		 * Prints the contents to the console area
 		 */
 		int lines = 1, startpos = 0;
-		if(line.length() > 61) {
+		if (line.length() > 61) {
 			lines = (int) Math.floor(line.length() / 64 + 1);
 		}
-		if(lines > 1) {
+		if (lines > 1) {
 			line = insertper(line, "\n", 64);
 		}
-		if(outbuff_length > RockPaperScissors.CONSOLE_HEIGHT - lines) {
+		if (outbuff_length > RockPaperScissors.CONSOLE_HEIGHT - lines) {
 			console_contents = shiftArray(console_contents, lines);
 			startpos = RockPaperScissors.CONSOLE_HEIGHT - lines;
 		} else {
@@ -296,13 +297,13 @@ class RPSUI {
 		}
 		String[] multiline_print = line.split("\n");
 		int i = 0;
-		while(i < multiline_print.length) {
+		while (i < multiline_print.length) {
 			console_contents[startpos + i] = multiline_print[i];
 			i++;
 		}
 		update(jta);
 	}
-	
+
 	public void setTakingInput(JTextArea jta, boolean yn) {
 		taking_input = yn ? "y" : "n";
 		update(jta);
@@ -313,6 +314,7 @@ class RPSUI {
 		score_comp = "" + comp;
 		update(jta);
 	}
+
 	public void clear(JTextArea jta) {
 		/*
 		 * Clear clears the UI contents but not the UI. resets it to

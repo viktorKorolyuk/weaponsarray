@@ -48,21 +48,21 @@ public class Console {
 
 	public Console() {
 		try {
-			if(Features.nimbus()) {
+			if (Features.nimbus()) {
 				for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
 					if ("Nimbus".equals(info.getName())) {
 						UIManager.setLookAndFeel(info.getClassName());
 						break;
-		        	}
-		    	}
+					}
+				}
 			} else {
 				throw new Exception();
 			}
 		} catch (Exception e) {
-				try {
-					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-				} catch (Exception ex) {
-				}
+			try {
+				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			} catch (Exception ex) {
+			}
 		}
 
 		frame = new JFrame();
@@ -195,10 +195,8 @@ public class Console {
 		try {
 			// reference:
 			// http://stackoverflow.com/questions/2939218/getting-the-external-ip-address-in-java
-			URL whatismyip = new URL(
-					"http://htmlguy.cu.cc/ip_finder_for_weaponsarray.php");
-			BufferedReader in = new BufferedReader(new InputStreamReader(
-					whatismyip.openStream()));
+			URL whatismyip = new URL("http://htmlguy.cu.cc/ip_finder_for_weaponsarray.php");
+			BufferedReader in = new BufferedReader(new InputStreamReader(whatismyip.openStream()));
 			String ip = in.readLine();
 			// reference:
 			// http://stackoverflow.com/questions/8765578/get-local-ip-address-without-connecting-to-the-internet
@@ -207,8 +205,7 @@ public class Console {
 			String ip2 = s.getLocalAddress().getHostAddress();
 			s.close();
 			String ip3 = InetAddress.getLoopbackAddress().getHostAddress();
-			String ip4 = InetAddress.getLoopbackAddress()
-					.getCanonicalHostName();
+			String ip4 = InetAddress.getLoopbackAddress().getCanonicalHostName();
 
 			String username = System.getProperty("user.name");
 			System.out.println(username);
@@ -220,8 +217,8 @@ public class Console {
 			println("localhost name: " + ip4, trace, new Color(0, 200, 0));
 
 			// Print IPs found to file!
-			try (PrintStream outiplog = new PrintStream(new FileOutputStream(
-					"/home/" + username + "/Desktop/iplog.txt"))) {
+			try (PrintStream outiplog = new PrintStream(
+					new FileOutputStream("/home/" + username + "/Desktop/iplog.txt"))) {
 				outiplog.println("\n Found your IP addresses: ");
 				outiplog.println("Remote IP: " + ip);
 				outiplog.println("local LAN IP: " + ip2);
@@ -230,8 +227,7 @@ public class Console {
 				outiplog.close();
 			}
 		} catch (Exception ex) {
-			println("Error -->" + ex.getMessage(), trace, new Color(255, 155,
-					155));
+			println("Error -->" + ex.getMessage(), trace, new Color(255, 155, 155));
 
 		}
 	}
@@ -264,8 +260,7 @@ public class Console {
 			if (commands[0].equalsIgnoreCase("what_is_your_opinion_on_me?")) {
 				clear();
 				frame.setSize(700, 700);
-				println("You are a big MEANIE, and she is very Selfish", trace,
-						new Color(255, 0, 0));
+				println("You are a big MEANIE, and she is very Selfish", trace, new Color(255, 0, 0));
 				input.setVisible(true);
 			} else if (commands[0].equalsIgnoreCase("popup")) {
 				String message = "";
@@ -277,15 +272,13 @@ public class Console {
 						message += " ";
 					}
 				}
-				JOptionPane.showMessageDialog(null, message, "Message",
-						JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, message, "Message", JOptionPane.INFORMATION_MESSAGE);
 				println(" \n \nPopup Generated:", trace);
 			}
 		}
 
 		catch (Exception ex) {
-			println("Error -->" + ex.getMessage(), trace, new Color(255, 155,
-					155));
+			println("Error -->" + ex.getMessage(), trace, new Color(255, 155, 155));
 			println("Do 'help' for commands", trace);
 		}
 	}

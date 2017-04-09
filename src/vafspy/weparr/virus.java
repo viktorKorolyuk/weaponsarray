@@ -8,8 +8,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.util.Random;
 
-
-
 // Used for Logo: import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -46,21 +44,21 @@ public class virus {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		try {
-			if(Features.nimbus()) {
+			if (Features.nimbus()) {
 				for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
 					if ("Nimbus".equals(info.getName())) {
 						UIManager.setLookAndFeel(info.getClassName());
 						break;
-		        	}
-		    	}
+					}
+				}
 			} else {
 				throw new Exception();
 			}
 		} catch (Exception e) {
-				try {
-					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-				} catch (Exception ex) {
-				}
+			try {
+				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			} catch (Exception ex) {
+			}
 		}
 		data = new JTextPane();
 		data.setEditable(false);
@@ -73,7 +71,6 @@ public class virus {
 		title.setForeground(new Color(255, 255, 255));
 		title.setBounds(70, 10, 700, 100);
 
-
 		yes = new JButton();
 		yes.setText("Yes");
 		yes.setBounds(500, 310, 90, 30);
@@ -81,10 +78,9 @@ public class virus {
 		yes.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "Finaly Youre Truthfull!",
-						"Alert", JOptionPane.INFORMATION_MESSAGE);
-				JOptionPane.showMessageDialog(null,
-						"Too bad youre still getting the virus", "Alert",
+				JOptionPane.showMessageDialog(null, "Finaly Youre Truthfull!", "Alert",
+						JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Too bad youre still getting the virus", "Alert",
 						JOptionPane.INFORMATION_MESSAGE);
 				still();
 			}
@@ -143,7 +139,6 @@ public class virus {
 
 		frame.setSize(600, 600);
 		frame.setLocationRelativeTo(null);
-
 
 		new virus2();
 		frame.dispose();

@@ -17,7 +17,7 @@ import javax.swing.JPanel;
  */
 public class WorldClock {
 
-	//private static final long serialVersionUID = 1L;
+	// private static final long serialVersionUID = 1L;
 
 	public JFrame f = new JFrame("World Clock");
 
@@ -72,7 +72,7 @@ public class WorldClock {
 		@Override
 		public void run() {
 			Calendar calendar = Calendar.getInstance();
-			
+
 			while (true) {
 				calendar.setTime(new Date());
 				int hours = calendar.get(Calendar.HOUR_OF_DAY);
@@ -82,38 +82,38 @@ public class WorldClock {
 				String strMin = Integer.toString(minutes);
 				boolean pm = false;
 				boolean isampm = true;
-				if(hours == 12 && minutes == 0 || hours == 24 && minutes == 0) {
+				if (hours == 12 && minutes == 0 || hours == 24 && minutes == 0) {
 					/*
-					 * If it is 12:00, set isampm to false.
-					 * This is because 12:00 is never AM or PM. This switches it
-					 * so that it uses "MIDNIGHT" and "NOON" instead.
-					 * Please read more on the GMT website: http://tiny.cc/gmtAMPM
+					 * If it is 12:00, set isampm to false. This is because
+					 * 12:00 is never AM or PM. This switches it so that it uses
+					 * "MIDNIGHT" and "NOON" instead. Please read more on the
+					 * GMT website: http://tiny.cc/gmtAMPM
 					 */
 					isampm = false;
 				}
-				if(hours > 12) {
+				if (hours > 12) {
 					/*
-					 * This section checks if it is PM (hours > 12) and if so, it subtracts
-					 * 12 from the hours variable, and sets pm to true, which signifies
-					 * that it is either PM or MIDNIGHT.
+					 * This section checks if it is PM (hours > 12) and if so,
+					 * it subtracts 12 from the hours variable, and sets pm to
+					 * true, which signifies that it is either PM or MIDNIGHT.
 					 */
 					hours = hours - 12;
 					pm = true;
 				}
 				String strHr = Integer.toString(hours);
 				/*
-				 * Use AM and PM times (or NOON and MIDNIGHT)
-				 * The statement to check AM/PM/NOON/MIDNIGHT is as follows:
-				 * (isampm ? (pm ? " PM" : " AM") : (pm ? " MIDNIGHT" : " NOON"))
-				 * this means the following:
-				 * if isampm, go to the AM/PM switch
-				 * otherwise, go to the NOON/MIDNIGHT switch
-				 * The AM/PM switch is as follows: '(pm ? " PM" : " AM")' and means:
-				 * if is pm, add " PM" to the string, otherwise add " AM"
-				 * The NOON/MIDNIGHT switch is as follows: '(pm ? " MIDNIGHT" : " NOON")' and means:
-				 * if is pm, add " MIDNIGHT" to the string, otherwise add " NOON"
+				 * Use AM and PM times (or NOON and MIDNIGHT) The statement to
+				 * check AM/PM/NOON/MIDNIGHT is as follows: (isampm ? (pm ?
+				 * " PM" : " AM") : (pm ? " MIDNIGHT" : " NOON")) this means the
+				 * following: if isampm, go to the AM/PM switch otherwise, go to
+				 * the NOON/MIDNIGHT switch The AM/PM switch is as follows: '(pm
+				 * ? " PM" : " AM")' and means: if is pm, add " PM" to the
+				 * string, otherwise add " AM" The NOON/MIDNIGHT switch is as
+				 * follows: '(pm ? " MIDNIGHT" : " NOON")' and means: if is pm,
+				 * add " MIDNIGHT" to the string, otherwise add " NOON"
 				 */
-				timeHere.setText(strHr + ":" + strMin + ":" + strSec + (isampm ? (pm ? " PM" : " AM") : (pm ? " MIDNIGHT" : " NOON")));
+				timeHere.setText(strHr + ":" + strMin + ":" + strSec
+						+ (isampm ? (pm ? " PM" : " AM") : (pm ? " MIDNIGHT" : " NOON")));
 			}
 
 		}

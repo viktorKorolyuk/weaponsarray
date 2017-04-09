@@ -2,9 +2,9 @@ package vafspy.weparr;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.FlowLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
@@ -29,7 +29,7 @@ import javax.swing.UIManager.LookAndFeelInfo;
 public class SystemInfo extends JFrame {
 	// Add a serialVersionUID: Takes care of those pesky warnings!
 	private static final long serialVersionUID = 1L;
-	
+
 	// Now for the JPanel Declarations
 	JPanel pnl = new JPanel();
 	JPanel top = new JPanel();
@@ -37,14 +37,15 @@ public class SystemInfo extends JFrame {
 	JPanel tl = new JPanel(new FlowLayout(FlowLayout.LEFT));
 	JPanel tr = new JPanel(new FlowLayout(FlowLayout.LEFT));
 	// And GridLayout Declarations
-	GridLayout gridlayout = new GridLayout(2,1);
-	GridLayout topgrid = new GridLayout(1,2);
+	GridLayout gridlayout = new GridLayout(2, 1);
+	GridLayout topgrid = new GridLayout(1, 2);
 	// Now for section titles
 	JLabel sysdata, userdata, allprops;
 	// Now for the bottom table work
-	String[] tcolnames = {"Name","Value"};
+	String[] tcolnames = { "Name", "Value" };
 	Set<String> propnames = System.getProperties().stringPropertyNames();
-	List<String> spropnames =  new ArrayList<String>(Arrays.asList(Arrays.copyOf(propnames.toArray(), propnames.toArray().length, String[].class)));
+	List<String> spropnames = new ArrayList<String>(
+			Arrays.asList(Arrays.copyOf(propnames.toArray(), propnames.toArray().length, String[].class)));
 	String[][] props = new String[spropnames.size()][spropnames.size()];
 	JTable table;
 	JScrollPane tscroll;
@@ -52,7 +53,7 @@ public class SystemInfo extends JFrame {
 	JLabel osname, osvers, subscr, hostname, users, groups, roots;
 	// And the top right labels
 	JLabel username, homedir, curdir, primgrp, grps, isroot;
-	
+
 	public void setLabels() {
 		// Labels are set in here for more consistent fonts.
 		// THE TITLES
@@ -62,22 +63,21 @@ public class SystemInfo extends JFrame {
 		// THE TOP LEFT AREA
 		osname = new JLabel(" OS Name: " + System.getProperty("os.name"));
 		osvers = new JLabel(" OS Ver.: " + System.getProperty("os.version"));
-		subscr = new JLabel("<html><br/><br/><br/><br/><br/><br/>----*Including System-Registered (non-person) users.----</html>");
+		subscr = new JLabel(
+				"<html><br/><br/><br/><br/><br/><br/>----*Including System-Registered (non-person) users.----</html>");
 		try {
 			String htest = InetAddress.getLocalHost().getHostName();
 			hostname = new JLabel(" Host Name: " + htest);
-			if(htest == null || htest.isEmpty()){
+			if (htest == null || htest.isEmpty()) {
 				throw new Exception();
 			}
-		}
-		catch(Exception e) {
+		} catch (Exception e) {
 			try {
 				Process r = Runtime.getRuntime().exec("hostname");
 				BufferedReader stdi = new BufferedReader(new InputStreamReader(r.getInputStream()));
 				stdi.close();
 				hostname = new JLabel(" Host Name: " + stdi.readLine());
-			}
-			catch(Exception err) {
+			} catch (Exception err) {
 				hostname = new JLabel(" Host Name: UNABLE TO FIND");
 			}
 		}
@@ -103,7 +103,8 @@ public class SystemInfo extends JFrame {
 		try {
 			etcgroup = new BufferedReader(new FileReader("/etc/group"));
 			int lines = 0;
-			while (etcgroup.readLine() != null) lines++;
+			while (etcgroup.readLine() != null)
+				lines++;
 			etcgroup.close();
 			groups = new JLabel(" Registered Groups*: " + lines);
 		} catch (Exception e) {
@@ -117,15 +118,13 @@ public class SystemInfo extends JFrame {
 		isroot = new JLabel(" Is Root: " + isrt);
 		String[] groupslist;
 		String grpslst;
-		try
-		{
+		try {
 			Process p = Runtime.getRuntime().exec("groups");
-	 
+
 			BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
 			grpslst = reader.readLine();
 			groupslist = grpslst.split(" ");
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			groupslist = new String[1];
 			groupslist[0] = "ERROR READING GROUPS!";
 			grpslst = "ERROR READING GROUPS!";
@@ -133,8 +132,8 @@ public class SystemInfo extends JFrame {
 		primgrp = new JLabel(" Primary Group: " + groupslist[0]);
 		grps = new JLabel(" Groups: " + grpslst);
 	}
-	
-	public void configProps(){
+
+	public void configProps() {
 		int i = 0;
 		for (String s : spropnames) {
 			props[i][0] = s;
@@ -142,34 +141,34 @@ public class SystemInfo extends JFrame {
 			i++;
 		}
 	}
-	
+
 	public SystemInfo() {
 		super("System Info");
 		setSize(650, 570);
-		setDefaultCloseOperation(DISPOSE_ON_CLOSE); // So that we can listen for close and open up mainPass
-		addWindowListener(new WindowAdapter()
-		{
-		    public void windowClosing(WindowEvent e)
-		    {
-		        new MainLoader();
-		    }
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE); // So that we can listen for
+													// close and open up
+													// mainPass
+		addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				new MainLoader();
+			}
 		});
 		try {
-			if(Features.nimbus()) {
+			if (Features.nimbus()) {
 				for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
 					if ("Nimbus".equals(info.getName())) {
 						UIManager.setLookAndFeel(info.getClassName());
 						break;
-		        	}
-		    	}
+					}
+				}
 			} else {
 				throw new Exception();
 			}
 		} catch (Exception e) {
-				try {
-					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-				} catch (Exception ex) {
-				}
+			try {
+				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			} catch (Exception ex) {
+			}
 		}
 		configProps();
 		setLabels();
@@ -188,7 +187,7 @@ public class SystemInfo extends JFrame {
 		sysdata.setFont(new Font("Arial", Font.BOLD, 15));
 		tl.add(sysdata);
 		tl.add(new JLabel("   "));
-		
+
 		// Top Left Box Labels
 		tl.add(osname);
 		tl.add(osvers);
@@ -198,31 +197,32 @@ public class SystemInfo extends JFrame {
 		tl.add(roots);
 		subscr.setFont(new Font("Arial", Font.ITALIC, 13));
 		tl.add(subscr);
-		
+
 		userdata.setFont(new Font("Arial", Font.BOLD, 15));
 		tr.add(userdata);
 		tr.add(new JLabel("   "));
-		
+
 		// Top Right Box Labels
 		tr.add(username);
 		tr.add(homedir);
 		tr.add(curdir);
 		tr.add(isroot);
-		
+
 		allprops.setFont(new Font("Arial", Font.BOLD, 15));
 		btm.add(allprops);
 		btm.add(new JLabel("   "));
 		table = new JTable(props, tcolnames);
 		table.setAutoCreateRowSorter(true);
-		
+
 		tscroll = new JScrollPane(table);
-		tscroll.setPreferredSize(new Dimension(640, 240));  
+		tscroll.setPreferredSize(new Dimension(640, 240));
 		table.setFillsViewportHeight(true);
 		btm.add(tscroll);
 		setVisible(true);
 	}
+
 	// The main method, so that it can be invoked standalone!
-	public static void main(String[] args){
+	public static void main(String[] args) {
 		new SystemInfo();
 	}
 }

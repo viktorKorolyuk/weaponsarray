@@ -24,12 +24,11 @@ public class StringCalculator extends JFrame implements ActionListener {
 
 	public StringCalculator() {
 		super("Adv. Math Calculator");
-		setSize(250,100);
+		setSize(250, 100);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		try {
 			if (Features.nimbus()) {
-				for (LookAndFeelInfo info : UIManager
-						.getInstalledLookAndFeels()) {
+				for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
 					if ("Nimbus".equals(info.getName())) {
 						UIManager.setLookAndFeel(info.getClassName());
 						break;
@@ -40,8 +39,7 @@ public class StringCalculator extends JFrame implements ActionListener {
 			}
 		} catch (Exception e) {
 			try {
-				UIManager.setLookAndFeel(UIManager
-						.getSystemLookAndFeelClassName());
+				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 			} catch (Exception ex) {
 			}
 		}
@@ -65,17 +63,10 @@ public class StringCalculator extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		try {
 			double g = new StringMath().parse(equation.getText());
-			JOptionPane
-			.showMessageDialog(
-					null,
-					"Equation Value: " + g,
-					"Equation Results", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Equation Value: " + g, "Equation Results", JOptionPane.ERROR_MESSAGE);
 		} catch (ScriptException e) {
-			JOptionPane
-					.showMessageDialog(
-							null,
-							"Evaluation Error! Unable to evaluate equation!",
-							"EVALUATION ERROR!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Evaluation Error! Unable to evaluate equation!", "EVALUATION ERROR!",
+					JOptionPane.ERROR_MESSAGE);
 		}
 
 	}

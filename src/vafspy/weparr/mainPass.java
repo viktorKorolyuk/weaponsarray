@@ -46,8 +46,7 @@ public class mainPass {
 
 		try {
 			if (Features.nimbus()) {
-				for (LookAndFeelInfo info : UIManager
-						.getInstalledLookAndFeels()) {
+				for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
 					if ("Nimbus".equals(info.getName())) {
 						UIManager.setLookAndFeel(info.getClassName());
 						break;
@@ -58,8 +57,7 @@ public class mainPass {
 			}
 		} catch (Exception e) {
 			try {
-				UIManager.setLookAndFeel(UIManager
-						.getSystemLookAndFeelClassName());
+				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 			} catch (Exception ex) {
 			}
 		}
@@ -85,12 +83,14 @@ public class mainPass {
 			}
 		});
 		main.add(quit);
+
 		JLabel logo = new JLabel(new ImageIcon(getClass().getResource("/resources/icon.png")));
-			logo.setBounds(400, 50, 200,200); // x ,y , height, length
+		logo.setBounds(400, 50, 200, 200); // x ,y , height, length
+
 		JButton register = new JButton();
 		register.setText("Register 'Hacks'");
 		register.setEnabled(true);
-		register.setBounds(170, 300, 200, 40); // x ,y , hight, length
+		register.setBounds(170, 300, 200, 40); // x ,y , height, length
 		register.addActionListener(new ActionListener() {
 
 			@Override
@@ -117,8 +117,9 @@ public class mainPass {
 					frame.dispose();
 					break;
 				case "Virus":
-					JOptionPane.showMessageDialog(null, "This Is VERY dangerous if handled incorrectly \n and I am not Responsible for any damage done",
-									"Alert", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null,
+							"This Is VERY dangerous if handled incorrectly \n and I am not Responsible for any damage done",
+							"Alert", JOptionPane.INFORMATION_MESSAGE);
 					new virus_create();
 					frame.dispose();
 					break;
@@ -153,8 +154,7 @@ public class mainPass {
 				modeltemp.add("Dos/DDos (Not working)");
 			}
 		}
-		choices.setModel(new DefaultComboBoxModel<String>(modeltemp
-				.toArray(new String[0])));
+		choices.setModel(new DefaultComboBoxModel<String>(modeltemp.toArray(new String[0])));
 		choices.setBounds(56, 100, 300, 20);
 		choices.setOpaque(true);
 
@@ -175,6 +175,5 @@ public class mainPass {
 		frame.setResizable(false);
 		frame.setVisible(true);
 	}
-
 
 }

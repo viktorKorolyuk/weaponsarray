@@ -39,18 +39,19 @@ public class PhoneNumberCoder extends JFrame {
 		} catch (Exception e) {
 			try {
 				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-			} catch (Exception ex) {}
+			} catch (Exception ex) {
+			}
 		}
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
-				new MainLoader(); //open the loader
+				new MainLoader(); // open the loader
 			}
 		});
 		add(pnl);
 		pnl.add(inlbl);
 		pnl.add(in);
 		pnl.add(go);
-		//setSize(10, pnl.getHeight() * 100);
+		// setSize(10, pnl.getHeight() * 100);
 		go.addActionListener(new ActionListener() {
 
 			@Override
@@ -62,12 +63,12 @@ public class PhoneNumberCoder extends JFrame {
 							"Decoded!", JOptionPane.INFORMATION_MESSAGE);
 				} catch (Exception err) {
 					err.printStackTrace();
-					
+
 					{
 						JOptionPane.showMessageDialog(null,
-							"There was an error decoding the phone number! It may be invalid or use"
-									+ "wierd characters. printing stack trace to terminal.",
-							"ERROR!", JOptionPane.ERROR_MESSAGE);
+								"There was an error decoding the phone number! It may be invalid or use"
+										+ "wierd characters. printing stack trace to terminal.",
+								"ERROR!", JOptionPane.ERROR_MESSAGE);
 					}
 				}
 			}
@@ -78,15 +79,16 @@ public class PhoneNumberCoder extends JFrame {
 	}
 
 	public String decode(String number) {
-		
-		String str = number.replaceAll("-", ""); //remove all dashes
-		String reconstructed = ""; //the final result goes here
-		
-		for (String retval : str.split("")) { //for every letter in the string
-			String regx = retval.replaceAll("[a-zA-Z]", "is_a_letter"); 
-			if (regx.equals("is_a_letter")) { //TODO find a simpler solution for this
-				
-				switch (retval.toLowerCase()) { //put the string to lowercase
+
+		String str = number.replaceAll("-", ""); // remove all dashes
+		String reconstructed = ""; // the final result goes here
+
+		for (String retval : str.split("")) { // for every letter in the string
+			String regx = retval.replaceAll("[a-zA-Z]", "is_a_letter");
+			if (regx.equals("is_a_letter")) { // TODO find a simpler solution
+												// for this
+
+				switch (retval.toLowerCase()) { // put the string to lowercase
 				case "a":
 				case "b":
 				case "c":
@@ -137,9 +139,11 @@ public class PhoneNumberCoder extends JFrame {
 			}
 		}
 		if (reconstructed.length() == 10) {
-			reconstructed = reconstructed.substring(0, 3) + "-" + reconstructed.substring(3, 6) + "-" + reconstructed.substring(6, 10);
+			reconstructed = reconstructed.substring(0, 3) + "-" + reconstructed.substring(3, 6) + "-"
+					+ reconstructed.substring(6, 10);
 		} else if (reconstructed.length() == 11 && reconstructed.startsWith("1")) {
-			reconstructed = "1-" + reconstructed.substring(1, 4) + "-" + reconstructed.substring(4, 7) + "-" + reconstructed.substring(7, 11);
+			reconstructed = "1-" + reconstructed.substring(1, 4) + "-" + reconstructed.substring(4, 7) + "-"
+					+ reconstructed.substring(7, 11);
 		}
 		return reconstructed;
 	}

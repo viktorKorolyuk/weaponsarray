@@ -1,7 +1,6 @@
 package vafspy.weparr;
 
 import java.awt.Font;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,7 +9,6 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.UIManager;
@@ -40,21 +38,21 @@ public class virus_create {
 		frame.getContentPane().setLayout(null);
 
 		try {
-			if(Features.nimbus()) {
+			if (Features.nimbus()) {
 				for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
 					if ("Nimbus".equals(info.getName())) {
 						UIManager.setLookAndFeel(info.getClassName());
 						break;
-		        	}
-		    	}
+					}
+				}
 			} else {
 				throw new Exception();
 			}
 		} catch (Exception e) {
-				try {
-					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-				} catch (Exception ex) {
-				}
+			try {
+				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			} catch (Exception ex) {
+			}
 		}
 
 		data = new JTextPane();
@@ -67,8 +65,6 @@ public class virus_create {
 		title.setFont(new Font("Courier New", Font.BOLD, 20));
 		title.setBounds(70, 10, 700, 100);
 
-		
-
 		JButton quit = new JButton();
 		quit.setText("Quit");
 		quit.setBounds(500, 310, 90, 30);
@@ -80,21 +76,10 @@ public class virus_create {
 		});
 		frame.add(quit);
 
-		
 		ImageIcon Logo = new ImageIcon("src/resources/icon.png");
 		JButton logo = new JButton(Logo);
 		logo.setEnabled(true);
-		
 		logo.setBounds(400, 50, 185, 200); // x ,y , height, length
-		logo.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null,
-						"This Aplication Was Created By r0ut3rK3y, and ported to weapons array by V.K", "Alert",
-						JOptionPane.INFORMATION_MESSAGE);
-			}
-		});
 
 		JButton register = new JButton();
 		register.setText("Create");

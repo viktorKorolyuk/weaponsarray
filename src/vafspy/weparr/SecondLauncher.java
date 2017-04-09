@@ -142,11 +142,9 @@ public class SecondLauncher extends JFrame {
 		});
 		pnl.add(launch);
 		help.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new SecondLauncherInfo();
-
 			}
 
 		});
