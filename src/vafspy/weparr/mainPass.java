@@ -117,10 +117,7 @@ public class mainPass {
 					frame.dispose();
 					break;
 				case "Virus":
-					JOptionPane
-							.showMessageDialog(
-									null,
-									"This Is VERY dangerous if handled incorrectly \n and I am not Responsible for any damage done",
+					JOptionPane.showMessageDialog(null, "This Is VERY dangerous if handled incorrectly \n and I am not Responsible for any damage done",
 									"Alert", JOptionPane.INFORMATION_MESSAGE);
 					new virus_create();
 					frame.dispose();

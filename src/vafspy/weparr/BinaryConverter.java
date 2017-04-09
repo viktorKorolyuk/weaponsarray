@@ -9,10 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -102,20 +98,7 @@ public class BinaryConverter extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String binary1 = input.getText();
-				String binary = "";
-				try {
-					int i = Integer.parseInt(binary1); // hex to decimal
-					binary = Integer.toBinaryString(i); // decimal to binary
-					input.setText("");
-				} catch (Exception ex) {
-					JOptionPane.showMessageDialog(null,
-							"Error: -->: " + ex.getMessage() + " |Please enter numbers as digits, words do not work.",
-							"Conversion Error.", JOptionPane.ERROR_MESSAGE);
-				}
-				data.setText("");
-				data.setText(binary);
-				input.selectAll();
-				input2.setText("");
+				calculateBin(binary1);
 			}
 		});
 

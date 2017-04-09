@@ -1,6 +1,7 @@
 package vafspy.weparr;
 
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -66,7 +67,7 @@ public class virus_create {
 		title.setFont(new Font("Courier New", Font.BOLD, 20));
 		title.setBounds(70, 10, 700, 100);
 
-		ImageIcon Logo = new ImageIcon("src/icon.png");
+		
 
 		JButton quit = new JButton();
 		quit.setText("Quit");
@@ -79,15 +80,18 @@ public class virus_create {
 		});
 		frame.add(quit);
 
+		
+		ImageIcon Logo = new ImageIcon("src/resources/icon.png");
 		JButton logo = new JButton(Logo);
 		logo.setEnabled(true);
-		logo.setBounds(400, 50, 185, 200); // x ,y , hight, length
+		
+		logo.setBounds(400, 50, 185, 200); // x ,y , height, length
 		logo.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null,
-						"This Aplication Was Created By r0ut3rK3y", "Alert",
+						"This Aplication Was Created By r0ut3rK3y, and ported to weapons array by V.K", "Alert",
 						JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
