@@ -1,5 +1,6 @@
 package vafspy.weparr.games;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Insets;
 
@@ -21,7 +22,7 @@ public class RockPaperScissors extends JFrame {
 	public RockPaperScissors() {
 		setTitle("Title");
 		setSize(500, 500);
-
+		this.setLayout(new BorderLayout());
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		gameArea.setMargin(new Insets(12, 12, 12, 12));
@@ -29,7 +30,7 @@ public class RockPaperScissors extends JFrame {
 		pnl.setBackground(Color.BLUE);
 		pnl.add(gameArea);
 
-		add(gameArea);
+		add(pnl);
 		setVisible(true);
 	}
 
