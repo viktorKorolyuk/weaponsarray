@@ -79,7 +79,7 @@ public class Console {
 		input = new JTextField();
 		input.setEditable(true);
 		input.setBackground(new Color(50, 50, 50));
-		input.setForeground(Color.BLACK);
+		input.setForeground(Color.white);
 		input.setCaretColor(Color.GREEN);
 		input.setOpaque(false);
 		input.setFont(new Font("Courier New", Font.BOLD, 12));
