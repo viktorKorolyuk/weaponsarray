@@ -20,14 +20,12 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
-import javax.swing.text.StyledDocument;
 
 import vafspy.weparr.customCode.Draggable;
 
 public class BinaryConverter extends JFrame {
 	// Add a serialVersionUID: Takes care of those pesky warnings!
 	private static final long serialVersionUID = 1L;
-	public JFrame frame;
 	public JComboBox<String> comboBox;
 	public JLabel bin;
 	public JLabel title;
@@ -36,7 +34,6 @@ public class BinaryConverter extends JFrame {
 	public JTextPane data;
 	public JTextField input;
 	public JTextField input2;
-	public StyledDocument document;
 	public Color textColor = Color.decode("#eeeeee");
 	public JButton btnQuit, btnBack;
 
@@ -45,13 +42,13 @@ public class BinaryConverter extends JFrame {
 	}
 
 	public BinaryConverter() {
-		frame = new JFrame();
-		frame.setTitle("Binary Converter v1.5");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
-		frame.setUndecorated(true); // my favorite piece of code
-
-		frame.setSize(660, 380);
+		setTitle("Binary Converter v1.5");
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		getContentPane().setLayout(null);
+		setUndecorated(true); // my favorite piece of code
+		
+		
+		setSize(660, 380);
 
 		try {
 			if (Features.nimbus()) {
@@ -73,7 +70,7 @@ public class BinaryConverter extends JFrame {
 
 		title = new JLabel();
 		title.setText("10| Binary And Hex |01");
-		title.setFont(new Font("Sans Serif", Font.BOLD, 35));
+		title.setFont(new Font("Sans Serif", Font.PLAIN, 35));
 		title.setForeground(textColor);
 		title.setBounds(78, 10, 500, 100);
 
@@ -83,7 +80,7 @@ public class BinaryConverter extends JFrame {
 		data.setText("Your answer will go here");
 		data.setForeground(Color.BLACK);
 		data.setBackground(Color.WHITE);
-		data.setFont(new Font("Courier New", Font.BOLD, 12));
+		data.setFont(new Font("Sans-Serif", Font.PLAIN, 12));
 		data.setOpaque(true);
 
 		input = new JTextField();
@@ -93,7 +90,7 @@ public class BinaryConverter extends JFrame {
 		input.setForeground(Color.BLACK);
 		input.setCaretColor(Color.RED);
 		input.setOpaque(true);
-		input.setFont(new Font("Courier New", Font.BOLD, 12));
+		input.setFont(new Font("Courier New", Font.PLAIN, 12));
 		input.addActionListener(new ActionListener() {
 
 			@Override
@@ -109,7 +106,7 @@ public class BinaryConverter extends JFrame {
 		input2.setForeground(Color.BLACK);
 		input2.setCaretColor(Color.RED);
 		input2.setOpaque(true);
-		input2.setFont(new Font("Courier New", Font.BOLD, 12));
+		input2.setFont(new Font("Courier New", Font.PLAIN, 12));
 		input2.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -117,9 +114,7 @@ public class BinaryConverter extends JFrame {
 				try {
 					calculateHex(binary2);
 				} catch (Exception ex) {
-					JOptionPane.showMessageDialog(null,
-							"Error: " + ex.getMessage() + " Please put digits as numbers do not work", "Alert",
-							JOptionPane.ERROR_MESSAGE);
+					showErrorMessage(ex);
 				}
 			}
 		});
@@ -133,7 +128,7 @@ public class BinaryConverter extends JFrame {
 		bin2.setForeground(textColor);
 
 		btnBack = new JButton("Back");
-		btnBack.setBounds(frame.getWidth() - 200, 0, 100, 30);
+		btnBack.setBounds(getWidth() - 200, 0, 100, 30);
 		btnBack.setOpaque(true);
 		btnBack.setBorder(null);
 		btnBack.setBackground(Color.decode("#555555"));
@@ -176,14 +171,14 @@ public class BinaryConverter extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new MainLoader();
-				frame.dispose();
+				dispose();
 			}
 		});
 
-		frame.add(btnBack);
+		add(btnBack);
 
 		btnQuit = new JButton("Quit");
-		btnQuit.setBounds(frame.getWidth() - 100, 0, 100, 30);
+		btnQuit.setBounds(getWidth() - 100, 0, 100, 30);
 		btnQuit.setOpaque(true);
 		btnQuit.setBorder(null);
 		btnQuit.setBackground(Color.decode("#ff6666"));
@@ -226,11 +221,11 @@ public class BinaryConverter extends JFrame {
 		btnQuit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
+				dispose();
 			}
 		});
 
-		frame.add(btnQuit);
+		add(btnQuit);
 
 		JButton btnGen = new JButton("Generate Binary");
 		btnGen.setBounds(77, 168, 150, 25);
@@ -242,9 +237,7 @@ public class BinaryConverter extends JFrame {
 				try {
 					calculateBin(binary1);
 				} catch (Exception ex) {
-					JOptionPane.showMessageDialog(null,
-							"Error: " + ex.getMessage() + "Please put digits as numbers do not work", "Alert",
-							JOptionPane.ERROR_MESSAGE);
+					showErrorMessage(ex);
 				}
 			}
 		});
@@ -258,30 +251,31 @@ public class BinaryConverter extends JFrame {
 				try {
 					calculateHex(binary2);
 				} catch (Exception ex) {
-					JOptionPane.showMessageDialog(null,
-							"Error: " + ex.getMessage() + " Please put digits as numbers do not work", "Alert",
-							JOptionPane.ERROR_MESSAGE);
+					showErrorMessage(ex);
 				}
 				input2.selectAll();
 			}
 		});
 
-		frame.getContentPane().add(btnGen);
-		frame.getContentPane().add(btnGen2);
-		frame.add(input, BorderLayout.SOUTH);
-		frame.add(input2, BorderLayout.SOUTH);
-		frame.add(data, BorderLayout.SOUTH);
-		frame.getContentPane().add(title);
-		frame.getContentPane().add(bin);
-		frame.getContentPane().add(bin2);
-		frame.setResizable(false);
-		frame.setVisible(true);
-		frame.getContentPane().setBackground(Color.decode("#333333"));
+		getContentPane().add(btnGen);
+		getContentPane().add(btnGen2);
+		add(input, BorderLayout.SOUTH);
+		add(input2, BorderLayout.SOUTH);
+		add(data, BorderLayout.SOUTH);
+		getContentPane().add(title);
+		getContentPane().add(bin);
+		getContentPane().add(bin2);
+		setResizable(false);
+		setVisible(true);
+		getContentPane().setBackground(Color.decode("#333333"));
 
+		// Center the JFrame
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-		frame.setLocation(dim.width / 2 - frame.getSize().width / 2, dim.height / 2 - frame.getSize().height / 2);
+		setLocation(dim.width / 2 - getSize().width / 2, dim.height / 2 - getSize().height / 2);
 
-		new Draggable(frame); // make a new draggable instance
+		// Make a new Draggable instance to allow user to drag JFrame around environment
+		new Draggable(this); 
+		
 	}
 
 	void calculateHex(String binary2) {
@@ -289,7 +283,6 @@ public class BinaryConverter extends JFrame {
 		String binary3 = Integer.toHexString(i); // decimal to
 
 		input2.setText("");
-		data.setText("");
 		data.setText(binary3);
 		input2.selectAll();
 		input.setText("");
@@ -300,9 +293,15 @@ public class BinaryConverter extends JFrame {
 		String binary = Integer.toBinaryString(i); // decimal to
 													// binary
 		input.setText("");
-		data.setText("");
 		data.setText(binary);
 		input.selectAll();
 		input2.setText("");
+	}
+	
+	
+	private void showErrorMessage(Exception ex) {
+		JOptionPane.showMessageDialog(null,
+				"Error: " + ex.getMessage() + ". Verify input is valid", "Alert",
+				JOptionPane.ERROR_MESSAGE);
 	}
 }

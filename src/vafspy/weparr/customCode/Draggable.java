@@ -7,20 +7,29 @@ import java.awt.event.MouseMotionListener;
 
 import javax.swing.JFrame;
 
-public class Draggable extends JFrame {
+/**
+ * An addition to the Java Swing JFrame object which allows dragging.
+ * Recommended when frame decoration is false.
+ * 
+ * @author Viktor Korolyuk
+ */
 
-	/**
-	 * stop complaining
-	 */
-	private static final long serialVersionUID = 1L;
+public class Draggable {
+
 	boolean mouseDown = false;
 	double xDif;
 	double yDif;
 	JFrame frame;
-
-	public Draggable(JFrame s) {
-		frame = s;
-		s.addMouseListener(new MouseListener() {
+	
+	/**
+	 * Allows the JFrame (Java Swing) to be dragged.
+	 * 
+	 * @param jFrame Current frame instance
+	 */
+	public Draggable(JFrame jFrame) {
+		frame = jFrame;
+		
+		frame.addMouseListener(new MouseListener() {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -32,29 +41,25 @@ public class Draggable extends JFrame {
 			public void mousePressed(MouseEvent e) {
 				// TODO Auto-generated method stub
 				startMoving();
-
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
 			}
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
-
 			}
 		});
 
-		s.addMouseMotionListener(new MouseMotionListener() {
+		frame.addMouseMotionListener(new MouseMotionListener() {
 
 			@Override
 			public void mouseMoved(MouseEvent e) {
@@ -64,27 +69,40 @@ public class Draggable extends JFrame {
 
 			@Override
 			public void mouseDragged(MouseEvent e) {
-				// TODO Auto-generated method stub
+				// Set frame position when
 				move();
 			}
 		});
 	}
+	
 
-	public void startMoving() {
+	/**
+	 * Calculates delta between mouse position and frame position.
+	 */
+	void startMoving() {
 		xDif = MouseInfo.getPointerInfo().getLocation().x - frame.getX();
 		yDif = MouseInfo.getPointerInfo().getLocation().y - frame.getY();
 		mouseDown = true;
 	}
 
-	public void stopMoving() {
+	/**
+	 * Stops frame from moving after mouse is released.
+	 */
+	void stopMoving() {
 		mouseDown = false;
 	}
 
-	public void move() {
+	/**
+	 * Calculates frame position based on pre-calculated deltas and current mouse
+	 * position.
+	 */
+	void move() {
 		if (!mouseDown)
 			return;
 		frame.setLocation((int) (MouseInfo.getPointerInfo().getLocation().x - xDif),
 				(int) (MouseInfo.getPointerInfo().getLocation().y - yDif));
+		
+		
 	}
 
 }

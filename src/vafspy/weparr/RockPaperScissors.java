@@ -45,6 +45,7 @@ public class RockPaperScissors extends JFrame {
 		add(p);
 
 		jta.setFont(new Font("Monospaced", Font.PLAIN, 12));
+		jta.setEditable(false);
 		p.add(jta);
 		setRPSEnabled(false);
 		rock.addActionListener(new ActionListener() {
@@ -211,8 +212,8 @@ public class RockPaperScissors extends JFrame {
 class RPSUI {
 	/*
 	 * RPSUI contains methods for updating different sections of the Rock Paper
-	 * Scissors Textual User Interface. This includes the status bar at the
-	 * bottom ('USER: x - COMP: x')
+	 * Scissors Textual User Interface. This includes the status bar at the bottom
+	 * ('USER: x - COMP: x')
 	 */
 	String score_user = "0";
 	String score_comp = "0";
@@ -317,8 +318,8 @@ class RPSUI {
 
 	public void clear(JTextArea jta) {
 		/*
-		 * Clear clears the UI contents but not the UI. resets it to
-		 * blank/default for the system.
+		 * Clear clears the UI contents but not the UI. resets it to blank/default for
+		 * the system.
 		 */
 		console_contents = new String[RockPaperScissors.CONSOLE_HEIGHT];
 		outbuff_length = 0;
