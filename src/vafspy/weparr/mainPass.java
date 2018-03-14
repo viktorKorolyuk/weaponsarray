@@ -31,7 +31,6 @@ public class mainPass {
 	public JTextField input2;
 	public StyledDocument document;
 	public JComboBox<String> choices;
-
 	JPanel main = new JPanel();
 
 	public static void main(String[] arg) {
@@ -155,7 +154,6 @@ public class mainPass {
 				modeltemp.add("Dos/DDos (Not working)");
 			}
 		}
-
 		choices.setModel(new DefaultComboBoxModel<String>(modeltemp.toArray(new String[0])));
 		choices.setBounds(56, 100, 300, 20);
 		choices.setOpaque(true);
@@ -167,7 +165,6 @@ public class mainPass {
 
 			}
 		});
-
 		main.add(choices);
 		main.add(title);
 		main.add(logo);

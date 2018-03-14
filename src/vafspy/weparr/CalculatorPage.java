@@ -137,8 +137,9 @@ public class CalculatorPage extends JFrame {
 			String finalnumb = Integer.toString(finalnum);
 			answer.setText(finalnumb);
 		} catch (Exception ex) {
-			JOptionPane.showMessageDialog(null, "Error --> " + ex
-					+ " In short Form the digit was too big and/or you used a letter or any other key that isnt a number",
+			JOptionPane.showMessageDialog(null,
+					"Error --> " + ex
+							+ " In short Form the digit was too big and/or you used a letter or any other key that isnt a number",
 					"Alert :(", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
@@ -156,8 +157,9 @@ public class CalculatorPage extends JFrame {
 			String finalnumb = Integer.toString(finalnum);
 			answer.setText(finalnumb);
 		} catch (Exception ex) {
-			JOptionPane.showMessageDialog(null, "Error --> " + ex
-					+ " In short Form the digit was too big and/or you used a letter or any other key that isnt a number",
+			JOptionPane.showMessageDialog(null,
+					"Error --> " + ex
+							+ " In short Form the digit was too big and/or you used a letter or any other key that isnt a number",
 					"Alert :(", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
@@ -175,8 +177,9 @@ public class CalculatorPage extends JFrame {
 			String finalnumb = Integer.toString(finalnum);
 			answer.setText(finalnumb);
 		} catch (Exception ex) {
-			JOptionPane.showMessageDialog(null, "Error --> " + ex
-					+ " In short Form the digit was too big and/or you used a letter or any other key that isnt a number",
+			JOptionPane.showMessageDialog(null,
+					"Error --> " + ex
+							+ " In short Form the digit was too big and/or you used a letter or any other key that isnt a number",
 					"Alert :(", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
@@ -194,8 +197,9 @@ public class CalculatorPage extends JFrame {
 			String finalnumb = Integer.toString(finalnum);
 			answer.setText(finalnumb);
 		} catch (Exception ex) {
-			JOptionPane.showMessageDialog(null, "Error --> " + ex
-					+ " In short Form the digit was too big and/or you used a letter or any other key that isnt a number",
+			JOptionPane.showMessageDialog(null,
+					"Error --> " + ex
+							+ " In short Form the digit was too big and/or you used a letter or any other key that isnt a number",
 					"Alert :(", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}

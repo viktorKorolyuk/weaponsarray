@@ -20,16 +20,15 @@ public class Draggable {
 	double xDif;
 	double yDif;
 	JFrame frame;
-
+	
 	/**
 	 * Allows the JFrame (Java Swing) to be dragged.
 	 * 
-	 * @param jFrame
-	 *            Current frame instance
+	 * @param jFrame Current frame instance
 	 */
 	public Draggable(JFrame jFrame) {
 		frame = jFrame;
-
+		
 		frame.addMouseListener(new MouseListener() {
 
 			@Override
@@ -75,6 +74,7 @@ public class Draggable {
 			}
 		});
 	}
+	
 
 	/**
 	 * Calculates delta between mouse position and frame position.
@@ -101,7 +101,8 @@ public class Draggable {
 			return;
 		frame.setLocation((int) (MouseInfo.getPointerInfo().getLocation().x - xDif),
 				(int) (MouseInfo.getPointerInfo().getLocation().y - yDif));
-
+		
+		
 	}
 
 }
