@@ -46,8 +46,7 @@ public class BinaryConverter extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
 		setUndecorated(true); // my favorite piece of code
-		
-		
+
 		setSize(660, 380);
 
 		try {
@@ -274,8 +273,8 @@ public class BinaryConverter extends JFrame {
 		setLocation(dim.width / 2 - getSize().width / 2, dim.height / 2 - getSize().height / 2);
 
 		// Make a new Draggable instance to allow user to drag JFrame around environment
-		new Draggable(this); 
-		
+		new Draggable(this);
+
 	}
 
 	void calculateHex(String binary2) {
@@ -297,11 +296,9 @@ public class BinaryConverter extends JFrame {
 		input.selectAll();
 		input2.setText("");
 	}
-	
-	
+
 	private void showErrorMessage(Exception ex) {
-		JOptionPane.showMessageDialog(null,
-				"Error: " + ex.getMessage() + ". Verify input is valid", "Alert",
+		JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage() + ". Verify input is valid", "Alert",
 				JOptionPane.ERROR_MESSAGE);
 	}
 }

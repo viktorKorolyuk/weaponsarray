@@ -62,7 +62,7 @@ public class SecondLauncher extends JFrame {
 
 	public SecondLauncher() {
 		super("Weapons Array");
-		setSize(500, 50);
+		setSize(500, 100);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		try {
 			if (Features.nimbus()) {
@@ -140,6 +140,7 @@ public class SecondLauncher extends JFrame {
 			}
 
 		});
+
 		pnl.add(launch);
 		help.addActionListener(new ActionListener() {
 			@Override
