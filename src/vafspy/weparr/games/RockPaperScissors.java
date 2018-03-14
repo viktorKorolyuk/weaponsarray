@@ -146,7 +146,7 @@ public class RockPaperScissors extends JFrame {
 		public void drawBoard(String... input) {
 			clearBoard();
 
-			// Create a 'border' string to prevent future looping and uneeded
+			// Create a 'border' string to prevent future looping and unneeded
 			// print-to-text-area
 			if (border.equals(""))
 				for (int i = 0; i < WIDTH; i++)
