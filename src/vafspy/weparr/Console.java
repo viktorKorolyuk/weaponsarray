@@ -7,6 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
@@ -67,7 +69,14 @@ public class Console {
 
 		frame = new JFrame();
 		frame.setTitle("Console");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.addWindowListener(new WindowAdapter() {
+
+			@Override
+			public void windowClosing(WindowEvent e) {
+				new MainLoader();
+			}
+		});
 
 		console = new JTextPane();
 		console.setEditable(false);
@@ -198,6 +207,7 @@ public class Console {
 			URL whatismyip = new URL("http://htmlguy.cu.cc/ip_finder_for_weaponsarray.php");
 			BufferedReader in = new BufferedReader(new InputStreamReader(whatismyip.openStream()));
 			String ip = in.readLine();
+
 			// reference:
 			// http://stackoverflow.com/questions/8765578/get-local-ip-address-without-connecting-to-the-internet
 			System.out.println("second");
