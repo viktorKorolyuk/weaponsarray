@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 
 import javax.swing.DefaultComboBoxModel;
@@ -17,7 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.UIManager;
-import javax.swing.UIManager.LookAndFeelInfo;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 
@@ -65,25 +66,16 @@ public class SecondLauncher extends JFrame {
 		setSize(500, 100);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		try {
-			if (Features.nimbus()) {
-				for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-					if ("Nimbus".equals(info.getName())) {
-						UIManager.setLookAndFeel(info.getClassName());
-						break;
-					}
-				}
-			} else {
-				throw new Exception();
-			}
-		} catch (Exception e) {
-			try {
-				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-			} catch (Exception ex) {
-			}
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+				| UnsupportedLookAndFeelException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 
 		add(pnl);
 		loadOptions();
+
 		pnl.add(selection);
 		launch.addActionListener(new ActionListener() {
 
@@ -187,7 +179,7 @@ class SecondLauncherInfo extends JFrame {
 				}
 			}
 		});
-		java.net.URL infourl = getClass().getResource("/resources/infodoc.html");
+		URL infourl = getClass().getResource("/resources/infodoc.html");
 		if (infourl != null) {
 			try {
 				area.setPage(infourl);

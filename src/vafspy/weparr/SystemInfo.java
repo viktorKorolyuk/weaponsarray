@@ -36,11 +36,14 @@ public class SystemInfo extends JFrame {
 	JPanel btm = new JPanel();
 	JPanel tl = new JPanel(new FlowLayout(FlowLayout.LEFT));
 	JPanel tr = new JPanel(new FlowLayout(FlowLayout.LEFT));
+	
 	// And GridLayout Declarations
 	GridLayout gridlayout = new GridLayout(2, 1);
 	GridLayout topgrid = new GridLayout(1, 2);
+	
 	// Now for section titles
 	JLabel sysdata, userdata, allprops;
+	
 	// Now for the bottom table work
 	String[] tcolnames = { "Name", "Value" };
 	Set<String> propnames = System.getProperties().stringPropertyNames();
@@ -49,17 +52,21 @@ public class SystemInfo extends JFrame {
 	String[][] props = new String[spropnames.size()][spropnames.size()];
 	JTable table;
 	JScrollPane tscroll;
+	
 	// Now for top left labels
 	JLabel osname, osvers, subscr, hostname, users, groups, roots;
+	
 	// And the top right labels
 	JLabel username, homedir, curdir, primgrp, grps, isroot;
 
 	public void setLabels() {
 		// Labels are set in here for more consistent fonts.
+		
 		// THE TITLES
 		sysdata = new JLabel(" System Data");
 		userdata = new JLabel(" User Data");
 		allprops = new JLabel("All Properties");
+		
 		// THE TOP LEFT AREA
 		osname = new JLabel(" OS Name: " + System.getProperty("os.name"));
 		osvers = new JLabel(" OS Ver.: " + System.getProperty("os.version"));
@@ -81,7 +88,9 @@ public class SystemInfo extends JFrame {
 				hostname = new JLabel(" Host Name: UNABLE TO FIND");
 			}
 		}
+		
 		BufferedReader etcpasswd, etcgroup;
+		
 		try {
 			etcpasswd = new BufferedReader(new FileReader("/etc/passwd"));
 			int lines = 0;
@@ -170,18 +179,24 @@ public class SystemInfo extends JFrame {
 			} catch (Exception ex) {
 			}
 		}
+		
 		configProps();
 		setLabels();
+		
 		add(pnl);
+		
 		pnl.setLayout(gridlayout);
 		pnl.add(top);
+		
 		top.setLayout(topgrid);
 		top.add(tl);
 		tl.setBorder(BorderFactory.createLineBorder(Color.black));
 		tl.setLayout(new BoxLayout(tl, BoxLayout.Y_AXIS));
+		
 		top.add(tr);
 		tr.setBorder(BorderFactory.createLineBorder(Color.black));
 		tr.setLayout(new BoxLayout(tr, BoxLayout.Y_AXIS));
+		
 		pnl.add(btm);
 		btm.setBorder(BorderFactory.createLineBorder(Color.black));
 		sysdata.setFont(new Font("Arial", Font.BOLD, 15));
